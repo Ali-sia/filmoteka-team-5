@@ -1,1 +1,2 @@
-# team-project-js
+# Filmoteka
+Командний проект по JS студентів GoIT з групи 5
