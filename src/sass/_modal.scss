@@ -1,13 +1,6 @@
 .backdrop {
     position: fixed;
     z-index: 100;
-
-    // @include mq(not-desktop) {
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    // }a
-
     top: 0;
     left: 0;
     width: 100%;
@@ -67,14 +60,9 @@
     position: absolute;
     top: 8px;
     right: 8px;
-
-    // @extend %flexstyle;
-
     width: 30px;
     height: 30px;
-
     padding: 0;
-
     border: none;
     background-color: transparent;
 
@@ -83,8 +71,6 @@
 
 .modal-btn__icon {
     fill: #000000;
-    // transition: fill $transitionLinks;
-
     .modal-btn:hover &,
     .modal-btn:focus & {
         fill: black;
@@ -102,7 +88,6 @@
     margin-bottom: 20px;
 }
 .filmcard__table {
-    // table-layout: fixed;
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 20px;
