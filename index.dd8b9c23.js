@@ -1,0 +1,2 @@
+function e(e){return document.querySelector(e)}function a(a){e(a).classList.add("header__nav-item--is-active")}function t(a){if(a.target.disabled)return;const t="header__libraryButton--isActive";e(`.${t}`)&&(e(`.${t}`).disabled=!1,e(`.${t}`).classList.toggle(t)),a.target.disabled=!0,a.target.classList.add(t)}e(".header__container").classList.contains("header__container--is-library")?a('[data-ref="library"]'):a('[data-ref="home"]'),e(".header__libraryListBunnon")&&e(".header__libraryListBunnon").addEventListener("click",t);
+//# sourceMappingURL=index.dd8b9c23.js.map
