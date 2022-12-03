@@ -1,3 +1,5 @@
+
+import './js/dom/loader';
 //Подчеркивание текущей страницы в хедере
 import { activePage } from "./js/dom/activePage";
 activePage();
