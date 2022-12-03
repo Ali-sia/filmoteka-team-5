@@ -5,6 +5,7 @@ import { API_KEY } from './api-key';
 export default class FilmsApiService {
   constructor() {
     this.data = []
+    this.genres = []
 
   }
   async fetchPopularFilms() {
@@ -24,4 +25,28 @@ export default class FilmsApiService {
       }
     }
   }
+
+// async fetchGenres() {
+//     const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
+
+//     const response = await axios.get(URL);
+
+//     this.genres = response.data.results;
+//     // console.log(this.genres)
+//     return response.data.results;
+//   }
+//   getGenreById(id) {
+//     for (const genre of this.genres) {
+//       if (genre.id === id) {
+//         return genre.name
+//       }
+//     }
+//   }
+async fetchGenres() {
+  const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
+
+  const response = await axios.get(URL);
+  this.genres = response.data.genres;
+  return  response.data.genres;
+}
 }
