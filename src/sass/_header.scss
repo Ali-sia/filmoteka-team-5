@@ -1,0 +1,333 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.166;
+    
+    background-color: var(--main-color);
+}
+
+p,
+button,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+
+    border: 0;
+}
+
+.container {
+    max-width: 320px;
+    
+    margin: 0 auto;
+
+    @media screen and (min-width: 768px) {
+        max-width: 768px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        max-width: 1280px;
+    }
+}
+
+.list {
+    list-style: none;
+}
+
+.link {
+    display: block;
+
+    color: var(--main-color);
+
+    text-decoration: none;
+
+    transition: color 0.25 linear;
+
+    &:hover,
+    &:focus {
+        color: #999999;
+    }
+}
+
+.img {
+    display: block;
+}
+
+.header {
+    &__container {
+        padding: 40px 20px 0px 20px;
+
+        height: 230px;
+    
+        background-color: var(--color-background-header);
+        opacity: 0.9;
+        background-position: center;
+        background-size: cover;
+
+        color: var(--main-color);
+
+        @media screen and (min-width: 768px) {
+            padding: 45px 32px 0px 32px;
+            
+            height: 216px;
+        }
+
+        &--is-home {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header-background-home-mobile.jpg);
+    
+            @media (min-device-pixel-ratio: 2),
+            (min-resolution: 2dppx),
+            (min-resolution: 192dpi) {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                    url(../images/header-background-home-mobile@2x.jpg);
+            }
+    
+            @media screen and (min-width: 768px) {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                    url(../images/header-background-home-tablet.jpg);
+                
+                @media (min-device-pixel-ratio: 2),
+                    (min-resolution: 2dppx),
+                    (min-resolution: 192dpi) {
+                        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                            url(../images/header-background-home-tablet@2x.jpg);
+                }
+            }
+    
+            @media screen and (min-width: 1280px) {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                    url(../images/header-background-home-desktop.jpg);
+                
+                @media (min-device-pixel-ratio: 2),
+                    (min-resolution: 2dppx),
+                    (min-resolution: 192dpi) {
+                        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                            url(../images/header-background-home-desktop@2x.jpg);
+                }
+            }
+        }
+
+        &--is-library {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header-background-library-mobile.jpg);
+    
+            @media (min-device-pixel-ratio: 2),
+            (min-resolution: 2dppx),
+            (min-resolution: 192dpi) {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                    url(../images/header-background-library-mobile@2x.jpg);
+            }
+    
+            @media screen and (min-width: 768px) {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                    url(../images/header-background-library-tablet.jpg);
+                
+                @media (min-device-pixel-ratio: 2),
+                    (min-resolution: 2dppx),
+                    (min-resolution: 192dpi) {
+                        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                            url(../images/header-background-library-tablet@2x.jpg);
+                }
+            }
+    
+            @media screen and (min-width: 1280px) {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                    url(../images/header-background-library-desktop.jpg);
+                
+                @media (min-device-pixel-ratio: 2),
+                    (min-resolution: 2dppx),
+                    (min-resolution: 192dpi) {
+                        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                            url(../images/header-background-library-desktop@2x.jpg);
+                }
+            }
+        }
+    }
+
+    &__nav {
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__list {
+        display: flex;
+
+        text-transform: uppercase;
+    }
+
+    &__nav-item {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-right: 40px;
+        }
+
+        &--is-active::after {
+            position: absolute;
+
+            width: 100%;
+            height: 3px;
+
+            background: var(--color-warning);
+
+            content: "";
+        }
+    }
+
+    &__form {
+        position: relative;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        margin: 54px auto 0px;
+
+        @media screen and (min-width: 768px) {
+            max-width: 336px;
+
+            margin-top: 40px;
+        }
+
+        @media screen and (min-width: 768px) {
+            max-width: 394px;
+        }
+    }
+
+    &__form-input {
+        width: 100%;
+
+        background-color: transparent;
+        
+        color: var(--main-color);
+
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.142;
+
+        border: 0;
+        border-bottom: 0.5px solid var(--main-color);
+    }
+
+    &__form-submit {
+        position: absolute;
+        right: 0;
+
+        background-color: transparent;
+
+        color: var(--main-color);
+
+        transition: color var(--transition-duration) linear;
+
+        &:hover,
+        &:focus {
+            color: #999999;
+        }
+    }
+
+    &__message {
+        text-align: center;
+
+        margin-top: 16px;
+
+        color: var(--color-warning);
+
+        font-weight: 400;
+        font-size: 14px;
+
+        @media screen and (min-width: 768px) {
+            margin-top: 20px;
+        }
+    }
+
+    &__libraryListBunnon {
+        justify-content: center;
+
+        margin: 60px auto 0;
+
+        @media screen and (min-width: 768px) {
+            margin-top: 40px;
+        }
+    }
+
+    &__libraryButton {
+        height: 44px;
+        width: 130px;
+
+        background-color: transparent;
+
+        color: var(--main-color);
+        font-weight: 500;
+        line-height: 1.33;
+        text-transform: uppercase;
+
+        border: 1px solid var(--main-color);
+        border-radius: 5px;
+
+        transition: color var(--transition-duration) linear,
+                    border var(--transition-duration) linear,
+                    background-color var(--transition-duration) linear;
+        
+        @media screen and (min-width: 768px) {
+            width: 152px;
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--color-active-button);
+            border: 1px solid var(--color-active-button);            
+        }
+
+        &--position:not(:last-child) {
+            margin-right: 20px;
+        }
+
+        &--isActive {
+            background-color: var(--color-active-button);
+            filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+            
+            color: white;
+            border: none;
+
+            &:hover,
+            &:focus {
+                border: none;
+                color: white;
+            }
+        }
+    }
+}
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+   
+
+    &__site-name {
+        display: none;
+
+        @media screen and (min-width: 768px) {
+            display: block;
+
+            margin-left: 8px;
+
+            font-size: 30px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            margin-left: 10px;
+        }
+
+    }
+}

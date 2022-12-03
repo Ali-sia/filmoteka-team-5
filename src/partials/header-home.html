@@ -1,0 +1,18 @@
+<header class="header">
+    <div class="container header__container header__container--is-home">
+        <include src="./partials/header-nav.html"></include>
+        <form class="header__form">
+            <input class="header__form-input" type="text" placeholder="Movie search" data-input/>
+
+            <button class="header__form-submit" type="submit">
+                <svg class="img" width="12" height="12">
+                    <use href="./images/sprite.svg#icon-search"></use>
+                </svg>
+            </button>
+        </form>
+
+        <p class="header__message" data-alarmMessage style="display: none;">
+            Search result not successful. Enter the correct movie name and 
+        </p>
+    </div>
+</header>
