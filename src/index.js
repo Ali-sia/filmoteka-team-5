@@ -1,1 +1,1 @@
-import './js/dom/loader.js';
+import './js/dom/loader';
