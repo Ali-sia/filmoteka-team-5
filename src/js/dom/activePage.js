@@ -1,12 +1,12 @@
 import { getElement } from "./getElement";
 
 export function activePage() {
-    if (getElement(".header__container").classList.contains("header__container--is-home")) {
-        isActivePage('[data-ref="home"]');
+    if (getElement(".header__container").classList.contains("header__container--is-library")) {
+        isActivePage('[data-ref="library"]');
         return;
     }
 
-    isActivePage('[data-ref="library"]');
+    isActivePage('[data-ref="home"]');
 }
 
 function isActivePage(selector) {
