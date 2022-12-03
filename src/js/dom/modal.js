@@ -16,10 +16,10 @@ function createModal(e) {
 
     const filmID = Number(filmCard.dataset.filmsId);
     const filmData = filmsApiServise.getFilmById(filmID) 
-    makeSingleFilmMarkup(filmData);
+    makeFilmcardMarkup(filmData);
 }
 
-function makeSingleFilmMarkup(filmData) {
+function makeFilmcardMarkup(filmData) {
     const { poster_path,
             title,
             vote_average,
@@ -88,6 +88,16 @@ function makeSingleFilmMarkup(filmData) {
                         <button class="modal-close-btn" data-modal-close>x
                         </button>
                     </div>`;
-    console.log(modalEl);
     backdrop.insertAdjacentHTML("afterbegin", modalEl);
+    openModal();
+}
+
+function openModal () {
+    backdrop.classList.remove("is-hidden")
+    document.querySelector(".modal-close-btn").addEventListener("click", closeModal);
+}
+
+function closeModal() {
+    backdrop.classList.add("is-hidden");
+    document.removeEventListener("click", closeModal);
 }
