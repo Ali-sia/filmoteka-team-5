@@ -3,8 +3,8 @@ import axios from 'axios';
 import API_KEY from './api-key'
 
 export default class FilmsApiService {
-    constructor() {
-      this.data = []
+  constructor() {
+    this.data = []
 
   }
   async fetchPopularFilms() {
@@ -12,13 +12,16 @@ export default class FilmsApiService {
 
     const response = await axios.get(URL);
 
-      this.data = response.data.results;
-      console.log(this.data)
+    this.data = response.data.results;
+    console.log(this.data)
     return response.data.results;
   }
 
-    getFilmById(id) {
-        return this.data[id]
+  getFilmById(id) {
+    for (const film of this.data) {
+      if (film.id === id) {
+        return film
+      }
     }
-
+  }
 }

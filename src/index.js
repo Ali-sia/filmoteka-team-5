@@ -11,7 +11,6 @@ import FilmsApiService from './js/api/api-server';
 import { appendPopularMarkup } from './js/dom/show-popular-films';
 import { resetMarkup } from './js/dom/show-popular-films';
 const filmsApiServise = new FilmsApiService();
-let filmById = {}
 
 resetMarkup()
 firstLoadPage()
@@ -21,6 +20,6 @@ async function firstLoadPage() {
    appendPopularMarkup(response)
       
    //доступ до фільму по ID без повторного запиту на сервер, ID зберігається в дата атрибуті на карточці фільму --> data-films-id
-    let filmById = filmsApiServise.getFilmById(5) 
+    let filmById = filmsApiServise.getFilmById(897192) 
     console.log(filmById)
 }
