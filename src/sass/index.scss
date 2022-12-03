@@ -1,2 +1,11 @@
-@import './common';
-@import './example';
+@import './base/common';
+
+@import './utils/mixins';
+@import './utils/variables';
+
+@import './header';
+@import './loader';
+@import './modal';
+@import './pagination';
+@import './film-card.scss';
+@import './modal';
