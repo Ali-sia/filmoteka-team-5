@@ -1,6 +1,6 @@
 // класс для запитів до api
 import axios from 'axios';
-import API_KEY from './api-key'
+import { API_KEY } from './api-key';
 
 export default class FilmsApiService {
   constructor() {
