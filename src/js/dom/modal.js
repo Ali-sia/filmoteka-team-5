@@ -16,10 +16,23 @@ function createModal(e) {
 
     const filmID = Number(filmCard.dataset.filmsId);
     const filmData = filmsApiServise.getFilmById(filmID) 
-    makeFilmcardMarkup(filmData);
+    let filmGenresNames = "unknown";
+    if (filmData.genre_ids) {
+        filmGenresNames = getFilmGenresNames(filmData.genre_ids); 
+    }
+    makeFilmcardMarkup(filmData, filmGenresNames);
 }
 
-function makeFilmcardMarkup(filmData) {
+function getFilmGenresNames (filmGenresID) {
+    const arrGenres = JSON.parse(localStorage.getItem('genres'));
+    if (!arrGenres) {
+        return "unknown";
+    }
+
+    return filmGenresID.map(genreID => arrGenres.find(genre => genre.id === genreID).name).join(", ");
+}
+
+function makeFilmcardMarkup(filmData, filmGenresNames) {
     const { poster_path,
             title,
             vote_average,
@@ -27,7 +40,8 @@ function makeFilmcardMarkup(filmData) {
             popularity,
             original_title,
             overview,
-          } = filmData;
+        } = filmData;
+    
     const modalEl = `<div class="filmcard__img-thumb">
                         <img class="filmcard__img"  
                             srcset="
@@ -53,7 +67,7 @@ function makeFilmcardMarkup(filmData) {
                             <tr>
                                 <td>Vote / Votes</td>
                                 <td>
-                                    <div class="filmcard__vote">${vote_average}</div>
+                                    <div class="filmcard__vote">${vote_average.toFixed(1)}</div>
                                 </td>
                                 <td>/</td>
                                 <td>
@@ -62,7 +76,7 @@ function makeFilmcardMarkup(filmData) {
                             </tr>
                             <tr>
                                 <td>Popularity</td>
-                                <td colspan="3">${popularity}</td>
+                                <td colspan="3">${popularity.toFixed(1)}</td>
                             </tr>
                             <tr>
                                 <td>Original Title</td>
@@ -70,7 +84,7 @@ function makeFilmcardMarkup(filmData) {
                             </tr>
                             <tr>
                                 <td>Genre</td>
-                                <td colspan="3">Western</td>
+                                <td colspan="3">${filmGenresNames}</td>
                             </tr>
                         </table>
                         <h2 class="filmcard__about touppercace">About</h2>
@@ -88,7 +102,8 @@ function makeFilmcardMarkup(filmData) {
 }
 
 function openModal () {
-    backdrop.classList.remove("is-hidden")
+    backdrop.classList.remove("is-hidden");
+    document.body.style.overflow = 'hidden';
     modalCloseBtn.addEventListener("click", closeModal);
     document.addEventListener("click", closeModalByOutBackdropClick);
     document.addEventListener("keydown", closeModalByEsc);
@@ -96,20 +111,20 @@ function openModal () {
 
 function closeModal() {
     backdrop.classList.add("is-hidden");
+    document.body.style.overflow = 'overlay';
     modalCloseBtn.removeEventListener("click", closeModal);
     document.removeEventListener("click", closeModalByOutBackdropClick);
     document.removeEventListener("keydown", closeModalByEsc);
 }
 
 function closeModalByOutBackdropClick(e) {
-    console.log(e.target === backdrop);
     if (e.target === backdrop) {
         closeModal();
     }
 }
 
 function closeModalByEsc(e) {
-    if (e.code === 'Escape') {
+    if (e.code === "Escape") {
         closeModal();
     }
 }
