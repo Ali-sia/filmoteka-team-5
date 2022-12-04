@@ -42,7 +42,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: center;
 
     @media screen and (min-width: 768px) {
       flex-direction: row;
@@ -54,6 +53,7 @@
       column-gap: 16px;
     }
   }
+
   &__img {
     display: block;
     width: 280px;
