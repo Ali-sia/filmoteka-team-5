@@ -103,6 +103,7 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
 
 function openModal () {
     backdrop.classList.remove("is-hidden");
+    document.body.style.overflow = 'hidden';
     modalCloseBtn.addEventListener("click", closeModal);
     document.addEventListener("click", closeModalByOutBackdropClick);
     document.addEventListener("keydown", closeModalByEsc);
@@ -110,6 +111,7 @@ function openModal () {
 
 function closeModal() {
     backdrop.classList.add("is-hidden");
+    document.body.style.overflow = 'overlay';
     modalCloseBtn.removeEventListener("click", closeModal);
     document.removeEventListener("click", closeModalByOutBackdropClick);
     document.removeEventListener("keydown", closeModalByEsc);
