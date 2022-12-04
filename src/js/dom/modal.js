@@ -2,7 +2,7 @@
 // + рендер карток фільмів
 
 import { filmsApiServise } from "../../index";
-import { list, backdrop, modalWrapper, modalCloseBtn } from "../refs";
+import { list, backdrop, filmcard, modalCloseBtn } from "../refs";
 
 list.addEventListener("click", createModal);
 
@@ -28,8 +28,7 @@ function makeFilmcardMarkup(filmData) {
             original_title,
             overview,
           } = filmData;
-    const modalEl = `<div class="filmcard">
-                    <div class="filmcard__img-thumb">
+    const modalEl = `<div class="filmcard__img-thumb">
                         <img class="filmcard__img"  
                             srcset="
                                 https://image.tmdb.org/t/p/w300/${poster_path}   300w,
@@ -78,9 +77,13 @@ function makeFilmcardMarkup(filmData) {
                         <p class="filmcard__text">
                             ${overview}
                         </p>
+                        <div class="filmcard__buttons-thumb">
+                            <button data-add-to-watched class="filmcard__button button--orange touppercace">add to Watched</button>
+                            <button data-add-to-queue class="filmcard__button button--white touppercace">add to queue</button>
+                        </div>
                     </div>`;
            
-    modalWrapper.innerHTML = modalEl;
+    filmcard.innerHTML = modalEl;
     openModal();
 }
 
