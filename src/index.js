@@ -10,7 +10,9 @@ activeLibraryBtn();
 import FilmsApiService from './js/api/api-server';
 import { appendPopularMarkup } from './js/dom/show-popular-films';
 import { resetMarkup } from './js/dom/show-popular-films';
-const filmsApiServise = new FilmsApiService();
+export const filmsApiServise = new FilmsApiService();
+
+import './js/dom/modal';
 
 resetMarkup()
 firstLoadPage()
