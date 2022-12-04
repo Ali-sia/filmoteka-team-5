@@ -1,265 +1,261 @@
 .backdrop {
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    // padding: 20px;
-    background: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // padding: 20px;
+  background: rgba(0, 0, 0, 0.25);
 
-    opacity: 1;
-    visibility: visible;
-    transition: visibility 450ms cubic-bezier(0.4, 0, 0.2, 1),
-        opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 450ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    &.is-hidden {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden;
-    }
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
 }
 
 .modal-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    max-width: 280px;
-    height: 100%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 280px;
+  height: 100%;
+  transform: translate(-50%, -50%);
 
-    padding-top: 48px;
+  padding-top: 48px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  background-color: white;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+    max-width: 704px;
+    height: fit-content;
+    padding-top: 40px;
+    padding-left: 36px;
+    padding-right: 72px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 806px;
+    height: fit-content;
+    padding-top: 40px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 40px;
-    background-color: white;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
-        0px 1px 1px rgba(0, 0, 0, 0.14),
-        0px 2px 1px rgba(0, 0, 0, 0.2);
-    @media screen and (min-width: 768px) and (max-width: 1279.98px) {
-        max-width: 704px;
-        height: fit-content;
-        padding-top: 40px;
-        padding-left: 36px;
-        padding-right: 72px;
-    }
-    
-    @media screen and (min-width: 1280px) {
-        max-width: 806px;
-        height: fit-content;
-        padding-top: 40px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 40px;
-    }
+  }
 
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .modal-close-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: none;
-    background-color: transparent;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
 
-    cursor: pointer;
+  cursor: pointer;
+
+  fill: black;
 }
 
-.modal-btn__icon {
-    color: #000000;
-    fill: black;
-    stroke: #000000;
-
-    .modal-btn:hover &,
-    .modal-btn:focus & {
-        fill: black;
-    }
-}
+// .modal-btn__icon {
+//   .modal-btn:hover &,
+//   .modal-btn:focus & {
+//     fill: var(--color-active-button);
+//   }
+// }
 .filmcard {
-    
-    @media screen and (min-width: 768px) {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-    }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 }
 
 .filmcard__img-thumb {
-    width: 240;
+  width: 240;
+  height: fit-content;
+  overflow: hidden;
+  // object-fit: contain;
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+    width: 264px;
     height: fit-content;
-    overflow: hidden;
-    // object-fit: contain;
-    margin-bottom: 20px;
-    @media screen and (min-width: 768px)and (max-width: 1279.98px) {
-        width: 264px;
-        height: fit-content;
-        margin-right: 68px;
-        margin-bottom: 0px;
-    }
-    
-    @media screen and (min-width: 1280px) {
-        width: 310px;
-        height: fit-content;
-        margin-right: 16px;
-        margin-bottom: 0px;
-    }
+    margin-right: 68px;
+    margin-bottom: 0px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 310px;
+    height: fit-content;
+    margin-right: 16px;
+    margin-bottom: 0px;
+  }
 }
 .filmcard__img {
-    width: 100%;
-    border-radius: 5px;
-    @media screen and (min-width: 768px)and (max-width: 1279.98px) {
-        // width: 264px;
-        // height: 374px;
-    }
-    
-    @media screen and (min-width: 1280px) {
-        // width: 375px;
-        // height: 478px;
-    }
+  width: 100%;
+  border-radius: 5px;
+  @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+    // width: 264px;
+    // height: 374px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    // width: 375px;
+    // height: 478px;
+  }
 }
 .filmcard__thumb {
-    font-weight: 500;
-    font-size: 12px;
+  font-weight: 500;
+  font-size: 12px;
 
-    @media screen and (min-width: 768px)and (max-width: 1279.98px) {
-        width: 265px;
-    }
+  @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+    width: 265px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        width: 391px;
-    }
+  @media screen and (min-width: 1280px) {
+    width: 391px;
+  }
 }
 .filmcard__table {
-    border-collapse: collapse;
-    // width: 100%;
-    margin-bottom: 12px;
-    width: fit-content;
+  border-collapse: collapse;
+  // width: 100%;
+  margin-bottom: 12px;
+  width: fit-content;
 
-    // @media screen and (min-width: 768px)and (max-width: 1279.98px) {
-    //     width: 85%;
-    // }
-    
-    // @media screen and (min-width: 1280px) {
-    //     width: 70%;
-    // }
-    & td {
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 14px;
-        color: black;
-        // width: fit-content;
-        padding-bottom: 8px;
-    }
+  // @media screen and (min-width: 768px)and (max-width: 1279.98px) {
+  //     width: 85%;
+  // }
 
-    & td:nth-child(1) {
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;
-        color: #8C8C8C;
-        // width: fit-content;
-        padding-right: 30px;
-        @media screen and (min-width: 768px)and (max-width: 1279.98px) {
-            padding-right: 40px;
-        }
-        
-        @media screen and (min-width: 1280px) {
-            padding-right: 70px;
-        }
-    }
-}
-
-.filmcard__title {
-    text-transform: uppercase;
+  // @media screen and (min-width: 1280px) {
+  //     width: 70%;
+  // }
+  & td {
     font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: left;
-    padding-bottom: 20px;
-    
-    @media screen and (min-width: 1280px) {
-        font-size: 28px;
-        line-height: 34px;
-    }
-}
+    font-size: 12px;
+    line-height: 14px;
+    color: black;
+    // width: fit-content;
+    padding-bottom: 8px;
+  }
 
-.filmcard__vote {
-    width: fit-content;
-    padding-left: 7px;
-    padding-right: 7px;
-    border-radius: 5px;
-    background-color: #FF6B01;
-    color: white;
-}
-
-.filmcard__votes {
-    width: fit-content;
-    padding-left: 7px;
-    padding-right: 7px;
-    border-radius: 5px;
-    background-color: #F7F7F7;
-    text-align: center;
-}
-
-.touppercace {
-    text-transform: uppercase;
-}
-
-.filmcard__about {
+  & td:nth-child(1) {
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    margin-top: 0;
-    margin-bottom: 8px;
+    color: #8c8c8c;
+    // width: fit-content;
+    padding-right: 30px;
+    @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+      padding-right: 40px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      padding-right: 70px;
+    }
+  }
+}
+
+.filmcard__title {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: left;
+  padding-bottom: 20px;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+.filmcard__vote {
+  width: fit-content;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 5px;
+  background-color: #ff6b01;
+  color: white;
+}
+
+.filmcard__votes {
+  width: fit-content;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+.touppercace {
+  text-transform: uppercase;
+}
+
+.filmcard__about {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
 .filmcard__text {
-    display: block;
-    max-height: 100px;
+  display: block;
+  max-height: 100px;
+  overflow-y: scroll;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  margin-bottom: 20px;
+  @media screen and (min-width: 1280px) {
+    max-height: 150px;
     overflow-y: scroll;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    margin-bottom: 20px;
-    @media screen and (min-width: 1280px) {
-        max-height: 150px;
-        overflow-y: scroll;
-    }
+  }
 }
 .filmcard__buttons-thumb {
-    display: flex;
-    justify-content: space-between;
-    @media screen and (min-width: 1280px) {
-        justify-content: flex-start;
-    }
+  display: flex;
+  justify-content: space-between;
+  @media screen and (min-width: 1280px) {
+    justify-content: flex-start;
+  }
 }
 .filmcard__button {
-    width: 110px;
-    height: 44px;
-    border: none;
-    outline: none;
-    background-color: inherit;
-    border-radius: 5px;
-    padding: 0 8px;
-    @media screen and (min-width: 768px)and (max-width: 1279.98px) {
-        width: 125px;
-    }
-    
-    @media screen and (min-width: 1280px) {
-        width: 136px;
-    }
+  width: 110px;
+  height: 44px;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  border-radius: 5px;
+  padding: 0 8px;
+  @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+    width: 125px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 136px;
+  }
 }
 .button--orange {
-    background-color: #FF6B01;
-    color: white;
-    @media screen and (min-width: 1280px) {
-        margin-left: 8px;
-        margin-right: 15px;
-    }
+  background-color: #ff6b01;
+  color: white;
+  @media screen and (min-width: 1280px) {
+    margin-left: 8px;
+    margin-right: 15px;
+  }
 }
 .button--white {
-    border: solid 1px #000000;
+  border: solid 1px #000000;
 }
