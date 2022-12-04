@@ -90,9 +90,27 @@ function makeFilmcardMarkup(filmData) {
 function openModal () {
     backdrop.classList.remove("is-hidden")
     modalCloseBtn.addEventListener("click", closeModal);
+    document.addEventListener("click", closeModalByOutBackdropClick);
+    document.addEventListener("keydown", closeModalByEsc);
 }
 
 function closeModal() {
     backdrop.classList.add("is-hidden");
     modalCloseBtn.removeEventListener("click", closeModal);
+    document.removeEventListener("click", closeModalByOutBackdropClick);
+    document.removeEventListener("keydown", closeModalByEsc);
 }
+
+function closeModalByOutBackdropClick(e) {
+    console.log(e.target === backdrop);
+    if (e.target === backdrop) {
+        closeModal();
+    }
+}
+
+function closeModalByEsc(e) {
+    if (e.code === 'Escape') {
+        closeModal();
+    }
+}
+
