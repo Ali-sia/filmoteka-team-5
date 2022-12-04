@@ -38,6 +38,11 @@ export function createPopularMarkup(data) {
     .join('');
 }
 
+let localStorageData = JSON.parse(localStorage.getItem('genres'));
+if (localStorageData === null) {
+  localStorage.setItem('genres', JSON.stringify([]));
+}
+
 function genresList(array) {
   let genre_names = '';
   let foundGenres = 0;
