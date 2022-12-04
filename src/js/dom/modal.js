@@ -2,7 +2,7 @@
 // + рендер карток фільмів
 
 import { filmsApiServise } from "../../index";
-import { list, backdrop, modalCloseBtn } from "../refs";
+import { list, backdrop, modalWrapper, modalCloseBtn } from "../refs";
 
 list.addEventListener("click", createModal);
 
@@ -80,7 +80,7 @@ function makeFilmcardMarkup(filmData) {
                         </p>
                     </div>`;
            
-    backdrop.insertAdjacentHTML("afterbegin", modalEl);
+    modalWrapper.innerHTML = modalEl;
     openModal();
 }
 
