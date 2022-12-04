@@ -12,7 +12,9 @@ activeLibraryBtn();
 import FilmsApiService from './js/api/api-server';
 import { appendPopularMarkup } from './js/dom/show-popular-films';
 import { resetMarkup } from './js/dom/show-popular-films';
-const filmsApiServise = new FilmsApiService();
+export const filmsApiServise = new FilmsApiService();
+
+import './js/dom/modal';
 
 resetMarkup()
 firstLoadPage()
@@ -20,8 +22,13 @@ firstLoadPage()
 async function firstLoadPage() {
    const response = await filmsApiServise.fetchPopularFilms()
    appendPopularMarkup(response)
-      
+
+    //зберігаємо жанри в LocalStorage
+    const saveGenresLocalStorage = await filmsApiServise.fetchGenres()
+    localStorage.setItem('genres', JSON.stringify(saveGenresLocalStorage))
+
    //доступ до фільму по ID без повторного запиту на сервер, ID зберігається в дата атрибуті на карточці фільму --> data-films-id
     let filmById = filmsApiServise.getFilmById(897192) 
     console.log(filmById)
 }
+

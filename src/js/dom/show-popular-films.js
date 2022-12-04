@@ -4,7 +4,7 @@ import {list} from '../refs'
 export function createPopularMarkup(data) {
   return data
     .map(
-      ({ poster_path, title, overview, id }) =>
+      ({ poster_path, title, overview, genre_ids, release_date, id }) => 
         ` <div class="films__film-card" data-films-id="${id}">
         <img
           class="films__img"
@@ -25,15 +25,50 @@ export function createPopularMarkup(data) {
         />
 
         <div class="films__info">
-          <p class="films__title">${title}</p>
+          <h2 class="films__title">${title}</h2>
 
-          <p class="films__genres">${overview} <span class="films__year"></span> </p>
+          <p class="films__genres">${genresList(genre_ids)} | ${release_date?.slice(
+            0,
+            4
+          )}</p>
         </div>
       </div>
-       `
+      `
     )
     .join('');
 }
+
+let localStorageData = JSON.parse(localStorage.getItem('genres'));
+if (localStorageData === null) {
+  localStorage.setItem('genres', JSON.stringify([]));
+}
+
+function genresList(array) {
+  let genre_names = '';
+  let foundGenres = 0;
+  const arrGenres = JSON.parse(localStorage.getItem('genres'));
+  for (const id of array) {
+    const genre_name = arrGenres.find(genre => id === genre.id);
+    if (!genre_name) {
+      continue;
+    }
+    if (genre_names) {
+      genre_names += ', ';
+    }
+    if (foundGenres === 2) {
+      genre_names += 'Others';
+      break;
+    }
+
+    foundGenres += 1;
+    genre_names += genre_name.name;
+  }
+  if (!genre_names) {
+    genre_names = 'unknown';
+  }
+  return genre_names;
+}
+
 export function resetMarkup() {
     list.innerHTML='';
 }
