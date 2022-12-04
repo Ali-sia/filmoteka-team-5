@@ -26,7 +26,7 @@ async function firstLoadPage() {
     localStorage.setItem('genres', JSON.stringify(saveGenresLocalStorage))
 
    //доступ до фільму по ID без повторного запиту на сервер, ID зберігається в дата атрибуті на карточці фільму --> data-films-id
-    let filmById = filmsApiServise.getFilmById(897192) 
-    console.log(filmById)
+    // let filmById = filmsApiServise.getFilmById(897192) 
+    // console.log(filmById)
 }
 
