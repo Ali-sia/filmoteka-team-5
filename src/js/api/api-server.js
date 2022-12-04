@@ -26,6 +26,26 @@ export default class FilmsApiService {
     }
   }
 
+  async getFilmByName(nameFilm) {
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${nameFilm}`;
+
+    let { data: { results } } = await axios.get(URL);
+
+    //Создание исключения при отсутсвии фильмов в базе
+    if (results.length === 0) {
+      throw new Error();
+    };
+    
+    //Добавление найденных фильмов в массив локальных данных
+    results.map(film => {
+      if (!this.getFilmById(film.id)) {
+        this.data.push(film);
+      }
+    });
+    
+    return results;
+  }
+
 async fetchGenres() {
   const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
 

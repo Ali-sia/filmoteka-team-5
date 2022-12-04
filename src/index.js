@@ -8,6 +8,10 @@ activePage();
 import { activeLibraryBtn } from "./js/dom/activeLibraryBtn";
 activeLibraryBtn();
 
+//Пошук за назвою
+import { searchFilms } from "./js/dom/show-search-films";
+searchFilms();
+
 //Завантаження популярних фільмів
 import FilmsApiService from './js/api/api-server';
 import { appendPopularMarkup, appendErrorMessage } from './js/dom/show-popular-films';
