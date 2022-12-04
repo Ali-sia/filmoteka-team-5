@@ -3,7 +3,7 @@ const refs = {
     exampleEl: document.querySelector('.example'),
     list: document.querySelector('.films__list'),
     backdrop: document.querySelector('.backdrop'),
-    modalWrapper: document.querySelector('.modal-wrapper'),
+    filmcard: document.querySelector('.filmcard'),
     modalCloseBtn: document.querySelector(".modal-close-btn")
 };
 
@@ -11,7 +11,7 @@ export const {
     exampleEl,
     list,
     backdrop,
-    modalWrapper,
+    filmcard,
     modalCloseBtn,
 } = refs;
 
