@@ -53,6 +53,7 @@
       column-gap: 16px;
     }
   }
+
   &__img {
     display: block;
     width: 280px;
@@ -67,16 +68,26 @@
     }
 
     @media screen and (min-width: 1280px) {
+      margin-bottom: 12px;
       width: 394px;
       height: 574px;
     }
   }
   &__info {
-    padding: 5px 5px;
+    padding: 0px 5px 5px;
   }
 
   &__title {
+    margin: 0;
     text-transform: uppercase;
+    line-height: 1.35;
+    font-size: 12px;
+    font-weight: 500;
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
   }
 
   &__genres {

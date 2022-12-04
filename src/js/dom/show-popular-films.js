@@ -1,11 +1,10 @@
 // відмалювати популярні фільми
 import {list} from '../refs'
-
 export function createPopularMarkup(data) {
   return data
     .map(
-      ({ poster_path, title, overview, genre_ids, release_date, id }) => 
-        ` <div class="films__film-card" data-films-id="${id}">
+      ({ poster_path, title, genre_ids, release_date, id }) => 
+        ` <article class="films__film-card" data-films-id="${id}">
         <img
           class="films__img"
           srcset="
@@ -18,7 +17,7 @@ export function createPopularMarkup(data) {
           "
           loading="lazy"
           src="https://image.tmdb.org/t/p/w300/${poster_path}"
-          alt="#"
+          alt="Poster of the film ${title}",
           sizes="(max-width: 320px) 280px,
             (max-width: 768px) 340px,
             400px"
@@ -27,21 +26,18 @@ export function createPopularMarkup(data) {
         <div class="films__info">
           <h2 class="films__title">${title}</h2>
 
-          <p class="films__genres">${genresList(genre_ids)} | ${release_date?.slice(
-            0,
-            4
-          )}</p>
+          <p class="films__genres">${genresList(genre_ids)} ${generateYear(release_date)}</p>
         </div>
-      </div>
+      </article>
       `
     )
     .join('');
 }
 
-let localStorageData = JSON.parse(localStorage.getItem('genres'));
-if (localStorageData === null) {
-  localStorage.setItem('genres', JSON.stringify([]));
-}
+// let localStorageData = JSON.parse(localStorage.getItem('genres'));
+// if (localStorageData === null) {
+//   localStorage.setItem('genres', JSON.stringify([]));
+// }
 
 function genresList(array) {
   let genre_names = '';
@@ -69,9 +65,22 @@ function genresList(array) {
   return genre_names;
 }
 
+function generateYear(release_date){
+  let year = "";
+  if (!release_date) {
+    return year
+  }
+  year = ' | ' + release_date?.slice(0, 4)
+  return year
+}
+
 export function resetMarkup() {
     list.innerHTML='';
 }
 export function appendPopularMarkup(data) {
   list.insertAdjacentHTML('beforeend', createPopularMarkup(data));
+}
+
+export function appendErrorMessage() {
+  list.insertAdjacentHTML('beforeend',  '<p>Unable to load images, please try again later.</p>');
 }
