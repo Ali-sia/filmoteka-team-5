@@ -78,8 +78,8 @@ function makeFilmcardMarkup(filmData) {
                             ${overview}
                         </p>
                         <div class="filmcard__buttons-thumb">
-                            <button class="filmcard__button button--orange touppercace">add to Watched</button>
-                            <button class="filmcard__button button--white touppercace">add to queue</button>
+                            <button data-add-to-watched class="filmcard__button button--orange touppercace">add to Watched</button>
+                            <button data-add-to-queue class="filmcard__button button--white touppercace">add to queue</button>
                         </div>
                     </div>`;
            
