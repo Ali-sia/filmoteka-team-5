@@ -20,13 +20,6 @@ export default class QueueFilmsStorage {
     localStorage.setItem('queue-films', JSON.stringify(this._queueFilmsList));
   }
 
-  addToQueueFilms(item) {
-    if (localStorage.getItem('queue-films')) {
-      this._queueFilmsList = JSON.parse(localStorage.getItem('queue-films'));
-    }
-    this._queueFilmsList.push(item);
-    this.saveQueueFilms();
-  }
   saveQueueFilms() {
     localStorage.setItem('queue-films', JSON.stringify(this._queueFilmsList));
   }
@@ -35,7 +28,6 @@ export default class QueueFilmsStorage {
     if (!localStorage.getItem('queue-films')) {
       return;
     }
-    // this._queueFilmsList = JSON.parse(localStorage.getItem('queue-films'));
     return JSON.parse(localStorage.getItem('queue-films'));
   }
   removeFromQueue(film) {
