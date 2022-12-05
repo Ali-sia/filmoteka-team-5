@@ -20,6 +20,7 @@ export const filmsApiServise = new FilmsApiService();
 
 import './js/dom/modal';
 
+let currentPage = 1;
 resetMarkup()
 firstLoadPage()
 
@@ -30,7 +31,7 @@ async function firstLoadPage() {
     localStorage.setItem('genres', JSON.stringify(saveGenresLocalStorage))
 
     //робимо запит за популярними фільмами
-    const response = await filmsApiServise.fetchPopularFilms()
+    const response = await filmsApiServise.fetchPopularFilms(currentPage)
     
     //робимо розмітку з популярних фільмів
     appendPopularMarkup(response)
@@ -38,7 +39,6 @@ async function firstLoadPage() {
         console.log(error.message)
         appendErrorMessage()
     }
-    
 
    //доступ до фільму по ID без повторного запиту на сервер, ID зберігається в дата атрибуті на карточці фільму --> data-films-id
     // let filmById = filmsApiServise.getFilmById(897192) 

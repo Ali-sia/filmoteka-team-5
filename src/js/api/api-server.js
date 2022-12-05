@@ -4,21 +4,21 @@ import { API_KEY } from './api-key';
 
 export default class FilmsApiService {
   constructor() {
-    this.data = []
+    this.totalPages = 0,
+    this.data = [],
     this.genres = []
 
   }
-  async fetchPopularFilms() {
-    const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
+  async fetchPopularFilms(page) {
+    const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${page}`;
 
     const response = await axios.get(URL);
-
+    this.totalPages = response.data.total_pages;
     this.data = response.data.results;
-    console.log(this.data)
     return response.data.results;
   }
 
-  getFilmById(id) {
+getFilmById(id) {
     for (const film of this.data) {
       if (film.id === id) {
         return film
@@ -52,5 +52,10 @@ async fetchGenres() {
   const response = await axios.get(URL);
   this.genres = response.data.genres;
   return  response.data.genres;
-}
+  }
+
+getTotalPages() {
+    return this.totalPages
+  }
+  
 }
