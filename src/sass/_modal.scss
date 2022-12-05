@@ -247,6 +247,9 @@
   @media screen and (min-width: 1280px) {
     width: 136px;
   }
+  &.is-hidden {
+    display: none;
+  }
 }
 .button--orange {
   background-color: #ff6b01;
