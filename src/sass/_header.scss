@@ -1,41 +1,4 @@
-html,
-body {
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.166;
-  height: 100%;
 
-  background-color: var(--main-color);
-}
-
-p,
-button,
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-button {
-  cursor: pointer;
-
-  border: 0;
-}
-
-.container {
-  max-width: 320px;
-
-  margin: 0 auto;
-
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    max-width: 1280px;
-  }
-}
 
 .list {
   list-style: none;
