@@ -121,10 +121,40 @@
       transform: translateY(0);
     }
 
+    &_text {
+      display: flex;
+
+      margin-bottom: 5px;
+
+      color: var(--main-color);
+
+      font-size: 28px;
+      @media screen and (min-width: 768px) {
+        font-size: 32px;
+      }
+
+      img {
+        margin-left: 10px;
+
+        height: 30px;
+        width: 30px;
+
+        @media screen and (min-width: 768px) {
+          height: 35px;
+          width: 35px;
+        }
+      }
+    }
+
     &_image {
       width: 100%;
       height: auto;
       object-fit: cover;
+    }
+
+    .overlay-img {
+      height: 300px;
+      width: 200px;
     }
 
     &_info {
