@@ -5,8 +5,8 @@ import { filmsApiServise } from "../../index";
 import { appendPopularMarkup } from './show-popular-films';
 
 export function searchFilms() {
-    getElement("#searchForm").reset();
     if (getElement("#searchForm")) {
+        getElement("#searchForm").reset();
         getElement("#searchForm").addEventListener('submit', onSearch);
     }
 }

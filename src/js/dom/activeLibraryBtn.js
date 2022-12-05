@@ -7,7 +7,7 @@ export function activeLibraryBtn() {
 }
 
 function onClick(event) {
-    if (event.target.disabled) {
+    if (event.target.disabled || event.target.tagName != "BUTTON") {
         return;
     }
 
