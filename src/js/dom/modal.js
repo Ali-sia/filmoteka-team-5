@@ -4,23 +4,62 @@
 import { filmsApiServise } from "../../index";
 import { list, backdrop, filmcard, modalCloseBtn } from "../refs";
 
+import WatchedFilmsStorage from '../storage/add-to-watced';
+import QueueFilmsStorage from '../storage/add-to-queue';
+let addToWatchedBtn;
+let addToQueueBtn;
+let removeFromWatchedBtn;
+let removeFromQueueBtn;
+let currentFilm = {};
+const watchedStorage = new WatchedFilmsStorage();
+const queueStorage = new QueueFilmsStorage();
+
+// function findCurrentFilm(id) {
+//   const filmsSet = getMoviesToLocalhost();
+//   currentFilm = filmsSet.find(film => film.id === id);
+//   return currentFilm;
+// }
+
 list.addEventListener("click", createModal);
 
 function createModal(e) {
     e.preventDefault();
     const filmCard = e.target.closest(".films__film-card");
-   
+    console.log('filmCard:', filmCard);
     if (!filmCard) {
         return;
     }
 
     const filmID = Number(filmCard.dataset.filmsId);
+    console.log('filmID:', filmID);
     const filmData = filmsApiServise.getFilmById(filmID) 
+    console.log('filmData:', filmData);
+    currentFilm = filmData;
     let filmGenresNames = "unknown";
     if (filmData.genre_ids) {
         filmGenresNames = getFilmGenresNames(filmData.genre_ids); 
     }
     makeFilmcardMarkup(filmData, filmGenresNames);
+
+//-----Для кнопок
+    addToWatchedBtn = document.querySelector('.btn__modal-add');
+    addToQueueBtn = document.querySelector('.btn__modal-queue');
+    removeFromQueueBtn = document.querySelector('.btn__modal-r-queue');
+    removeFromWatchedBtn = document.querySelector('.btn__modal-r-watched');
+
+    addToWatchedBtn.addEventListener('click', addToWatchedLS);
+    removeFromWatchedBtn.addEventListener('click', removeFromWatchedLS);
+    addToQueueBtn.addEventListener('click', addToQueueLS);
+    removeFromQueueBtn.addEventListener('click', removeFromQueueLS);
+
+    if (watchedStorage.checkFilmInWatchedLocStor(currentFilm)) {
+        addToWatchedBtn.classList.add('is-hidden');
+        removeFromWatchedBtn.classList.remove('is-hidden');
+    }
+    if (queueStorage.checkFilmInQueueLocStor(currentFilm)) {
+        addToQueueBtn.classList.add('is-hidden');
+        removeFromQueueBtn.classList.remove('is-hidden');
+    }
 }
 
 function getFilmGenresNames (filmGenresID) {
@@ -92,8 +131,11 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                             ${overview}
                         </p>
                         <div class="filmcard__buttons-thumb">
-                            <button data-add-to-watched class="filmcard__button button--orange touppercace">add to Watched</button>
-                            <button data-add-to-queue class="filmcard__button button--white touppercace">add to queue</button>
+                            <button class="filmcard__button button--orange touppercace btn__modal-add">add to Watched</button>
+                            <button class="filmcard__button button--orange touppercace btn__modal-r-watched is-hidden">remove from Watched</button>
+                            
+                            <button class="filmcard__button button--white touppercace btn__modal-queue">add to queue</button>
+                            <button class="filmcard__button button--white touppercace btn__modal-r-queue is-hidden">remove from queue</button>
                         </div>
                     </div>`;
            
@@ -129,3 +171,36 @@ function closeModalByEsc(e) {
     }
 }
 
+//функціонал для ЛС
+function addToWatchedLS() {
+  watchedStorage.refreshData();
+
+  watchedStorage.addToWatchedFilms(currentFilm);
+  watchedStorage.saveWatchedFilms();
+
+  //
+
+  addToWatchedBtn.classList.add('is-hidden');
+  removeFromWatchedBtn.classList.remove('is-hidden');
+}
+
+function addToQueueLS() {
+  queueStorage.myAddToQueueFilms(currentFilm);
+
+  addToQueueBtn.classList.add('is-hidden');
+  removeFromQueueBtn.classList.remove('is-hidden');
+}
+
+function removeFromWatchedLS() {
+  addToWatchedBtn.classList.remove('is-hidden');
+  removeFromWatchedBtn.classList.add('is-hidden');
+
+  watchedStorage.removeFromWatched(currentFilm);
+}
+
+function removeFromQueueLS() {
+  addToQueueBtn.classList.remove('is-hidden');
+  removeFromQueueBtn.classList.add('is-hidden');
+
+  queueStorage.removeFromQueue(currentFilm);
+}
