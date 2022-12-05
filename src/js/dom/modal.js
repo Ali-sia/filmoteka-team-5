@@ -80,7 +80,7 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
             overview,
         } = filmData;
     
-    const modalEl = `<div class="filmcard__img-thumb">
+     const modalEl = `<div class="filmcard__img-thumb">
                         <img class="filmcard__img"  
                             srcset="
                                 https://image.tmdb.org/t/p/w300/${poster_path}   300w,
@@ -104,12 +104,8 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                             </caption>
                             <tr>
                                 <td>Vote / Votes</td>
-                                <td>
-                                    <div class="filmcard__vote">${vote_average.toFixed(1)}</div>
-                                </td>
-                                <td>/</td>
-                                <td>
-                                    <div class="filmcard__votes">${vote_count}</div>
+                                <td>                                   
+                                    <div class="filmcard__votes"><span class="filmcard__vote">${vote_average.toFixed(1)}</span> / ${vote_count}</div>
                                 </td>
                             </tr>
                             <tr>
