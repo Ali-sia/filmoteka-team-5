@@ -9,7 +9,6 @@ export default class WatchedFilmsStorage {
         localStorage.getItem('watched-films')
       );
     }
-    console.log('пусто');
   }
 
   addToWatchedFilms(item) {

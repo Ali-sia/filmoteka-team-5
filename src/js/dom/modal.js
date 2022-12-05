@@ -31,10 +31,8 @@ function createModal(e) {
     }
 
     const filmID = Number(filmCard.dataset.filmsId);
-    console.log('filmID:', filmID);
     const filmData = filmsApiServise.getFilmById(filmID) 
-    console.log('filmData:', filmData);
-    currentFilm = filmData;
+
     let filmGenresNames = "unknown";
     if (filmData.genre_ids) {
         filmGenresNames = getFilmGenresNames(filmData.genre_ids); 
@@ -42,6 +40,7 @@ function createModal(e) {
     makeFilmcardMarkup(filmData, filmGenresNames);
 
 //-----Для кнопок
+    currentFilm = filmData;
     addToWatchedBtn = document.querySelector('.btn__modal-add');
     addToQueueBtn = document.querySelector('.btn__modal-queue');
     removeFromQueueBtn = document.querySelector('.btn__modal-r-queue');
@@ -177,8 +176,6 @@ function addToWatchedLS() {
 
   watchedStorage.addToWatchedFilms(currentFilm);
   watchedStorage.saveWatchedFilms();
-
-  //
 
   addToWatchedBtn.classList.add('is-hidden');
   removeFromWatchedBtn.classList.remove('is-hidden');
