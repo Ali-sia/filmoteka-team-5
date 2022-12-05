@@ -14,7 +14,7 @@ export default class FilmsApiService {
     const response = await axios.get(URL);
 
     this.data = response.data.results;
-    // console.log(this.data)
+    console.log(this.data)
     return response.data.results;
   }
 
