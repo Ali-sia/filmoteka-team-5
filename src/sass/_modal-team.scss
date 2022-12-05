@@ -36,6 +36,12 @@
       @media screen and (min-width: 1280px) {
         width: calc((100% - 2 * 50px) / 3);
       }
+      //------------------------------
+      @media screen and (max-width: 768px) {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
     &_holder {
       max-height: 297px;
       @media screen and (min-width: 768px) {
