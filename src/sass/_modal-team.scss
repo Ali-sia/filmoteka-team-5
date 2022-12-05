@@ -13,6 +13,14 @@
 }
 
 .modal {
+  &_title {
+    font-size: 25px;
+    line-height: 1.16;
+
+    text-transform: uppercase;
+
+    text-align: center;
+  }
   &-list {
     padding: 0 20px 40px 20px;
     @media screen and (min-width: 768px) {
@@ -28,15 +36,12 @@
 
     &_item {
       width: calc((100% - 0 * 50px) / 1);
-      //   max-height: 297px;
       @media screen and (min-width: 768px) {
         width: calc((100% - 1 * 50px) / 2);
-        // max-height: 322px;
       }
       @media screen and (min-width: 1280px) {
         width: calc((100% - 2 * 50px) / 3);
       }
-      //------------------------------
       @media screen and (max-width: 768px) {
         &:not(:last-child) {
           margin-bottom: 20px;
