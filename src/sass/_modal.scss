@@ -33,7 +33,7 @@
   padding-right: 20px;
   padding-bottom: 40px;
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--main-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   @media screen and (min-width: 768px) and (max-width: 1279.98px) {
@@ -68,15 +68,17 @@
 
   cursor: pointer;
 
-  fill: black;
-}
+  fill: var(--color-main-black);
 
-// .modal-btn__icon {
-//   .modal-btn:hover &,
-//   .modal-btn:focus & {
-//     fill: var(--color-active-button);
-//   }
-// }
+  transition: fill var(--transition-duration) linear,
+  scale var(--transition-duration) linear;
+
+  &:hover,
+  &:focus {
+    fill: var(--color-active-button);
+    scale: 1.15;
+  }
+}
 .filmcard {
   @media screen and (min-width: 768px) {
     display: flex;
@@ -147,8 +149,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
-    color: black;
-    // width: fit-content;
+    color: var(--color-main-black);
     padding-bottom: 8px;
   }
 
@@ -157,7 +158,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    color: #8c8c8c;
+    color: var(--color-modal-grey);
     // width: fit-content;
     padding-right: 30px;
     @media screen and (min-width: 768px) and (max-width: 1279.98px) {
@@ -189,8 +190,8 @@
   padding-left: 7px;
   padding-right: 7px;
   border-radius: 5px;
-  background-color: #ff6b01;
-  color: white;
+  background-color: var(--color-active-button);
+  color: var(--main-color);
 }
 
 .filmcard__votes {
@@ -198,7 +199,7 @@
   // padding-left: 7px;
   padding-right: 7px;
   border-radius: 5px;
-  background-color: #f7f7f7;
+  background-color: var(--color-footer-background);
   text-align: center;
 }
 
@@ -239,9 +240,18 @@
   height: 44px;
   border: none;
   outline: none;
-  background-color: inherit;
+  background-color: transparent;
+  // color: var(--color-main-black);
+  text-transform: uppercase;
+  // border: 1px solid var(--color-main-black);
   border-radius: 5px;
   padding: 0 8px;
+
+  transition: color var(--transition-duration) linear,
+  border var(--transition-duration) linear,
+  background-color var(--transition-duration) linear,
+  scale var(--transition-duration) linear;
+
   @media screen and (min-width: 768px) and (max-width: 1279.98px) {
     width: 125px;
   }
@@ -252,15 +262,31 @@
   &.is-hidden {
     display: none;
   }
+  &--position {
+    @media screen and (min-width: 1280px) {
+            margin-left: 8px;
+            margin-right: 15px;
+          }
+    }
 }
-.button--orange {
-  background-color: #ff6b01;
-  color: white;
-  @media screen and (min-width: 1280px) {
-    margin-left: 8px;
-    margin-right: 15px;
-  }
+.btn__modal-add,
+.btn__modal-queue {
+  color: var(--color-main-black);
+  border: 1px solid var(--color-main-black);
+  &:hover,
+  &:focus {
+      color: var(--color-active-button);
+      border: 1px solid var(--color-active-button);
+      // background-color: var(--color-active-button);
+    }
 }
-.button--white {
-  border: solid 1px #000000;
+.btn__modal-r-watched,
+.btn__modal-r-queue {
+  color: var(--main-color);
+  border: 1px solid var(--color-active-button);
+  background-color: var(--color-active-button);
+  &:hover,
+  &:focus {
+    scale: 1.02;
+    }
 }
