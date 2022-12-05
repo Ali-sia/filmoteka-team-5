@@ -11,3 +11,13 @@
     min-width: 980px;
   }
 }
+
+.modal {
+  &-list {
+    padding: 0 20px 40px 20px;
+    @media screen and (min-width: 768px) {
+      padding: 0 65px 35px 65px;
+
+    }
+    @media screen and (min-width: 1280px) {
+      padding: 0 50px 35px 50px;
