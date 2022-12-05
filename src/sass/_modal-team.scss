@@ -1,0 +1,13 @@
+.modal-team {
+  padding: 0;
+  height: 90vh;
+
+  min-width: 280px;
+
+  @media screen and (min-width: 768px) {
+    min-width: 704px;
+  }
+  @media screen and (min-width: 1280px) {
+    min-width: 980px;
+  }
+}
