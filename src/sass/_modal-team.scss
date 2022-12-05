@@ -24,6 +24,15 @@
     }
     @media screen and (min-width: 1280px) {
       padding: 0 50px 35px 50px;
+    &_info {
+      font-size: 20px;
+      text-align: center;
+      color: var(--color-main-black);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     &_icon {
       margin-left: 10px;
     }
