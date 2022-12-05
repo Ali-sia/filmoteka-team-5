@@ -126,11 +126,11 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                             ${overview}
                         </p>
                         <div class="filmcard__buttons-thumb">
-                            <button class="filmcard__button button--orange touppercace btn__modal-add">add to Watched</button>
-                            <button class="filmcard__button button--orange touppercace btn__modal-r-watched is-hidden">remove from Watched</button>
+                            <button class="filmcard__button filmcard__button--position btn__modal-add">add to Watched</button>
+                            <button class="filmcard__button filmcard__button--position btn__modal-r-watched is-hidden">remove from Watched</button>
                             
-                            <button class="filmcard__button button--white touppercace btn__modal-queue">add to queue</button>
-                            <button class="filmcard__button button--white touppercace btn__modal-r-queue is-hidden">remove from queue</button>
+                            <button class="filmcard__button btn__modal-queue">add to queue</button>
+                            <button class="filmcard__button btn__modal-r-queue is-hidden">remove from queue</button>
                         </div>
                     </div>`;
            
