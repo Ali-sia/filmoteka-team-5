@@ -3,16 +3,19 @@
 
 import { filmsApiServise } from "../../index";
 import { list, backdrop, filmcard, modalCloseBtn } from "../refs";
-
 import WatchedFilmsStorage from '../storage/add-to-watced';
 import QueueFilmsStorage from '../storage/add-to-queue';
+import TrailerApiService from "../api/getting-trailer";
+
 let addToWatchedBtn;
 let addToQueueBtn;
 let removeFromWatchedBtn;
 let removeFromQueueBtn;
+let youTubeBtn;
 let currentFilm = {};
 const watchedStorage = new WatchedFilmsStorage();
 const queueStorage = new QueueFilmsStorage();
+const trailerApiService = new TrailerApiService();
 
 // function findCurrentFilm(id) {
 //   const filmsSet = getMoviesToLocalhost();
@@ -25,7 +28,7 @@ list.addEventListener("click", createModal);
 function createModal(e) {
     e.preventDefault();
     const filmCard = e.target.closest(".films__film-card");
-    console.log('filmCard:', filmCard);
+    // console.log('filmCard:', filmCard);
     if (!filmCard) {
         return;
     }
@@ -38,6 +41,7 @@ function createModal(e) {
         filmGenresNames = getFilmGenresNames(filmData.genre_ids); 
     }
     makeFilmcardMarkup(filmData, filmGenresNames);
+    openModal();
 
 //-----Для кнопок
     currentFilm = filmData;
@@ -45,11 +49,13 @@ function createModal(e) {
     addToQueueBtn = document.querySelector('.btn__modal-queue');
     removeFromQueueBtn = document.querySelector('.btn__modal-r-queue');
     removeFromWatchedBtn = document.querySelector('.btn__modal-r-watched');
+    
 
     addToWatchedBtn.addEventListener('click', addToWatchedLS);
     removeFromWatchedBtn.addEventListener('click', removeFromWatchedLS);
     addToQueueBtn.addEventListener('click', addToQueueLS);
     removeFromQueueBtn.addEventListener('click', removeFromQueueLS);
+    
 
     if (watchedStorage.checkFilmInWatchedLocStor(currentFilm)) {
         addToWatchedBtn.classList.add('is-hidden');
@@ -78,9 +84,13 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
             popularity,
             original_title,
             overview,
+            id,
         } = filmData;
     
-     const modalEl = `<div class="filmcard__img-thumb">
+    const modalEl = `<div class="filmcard__img-thumb">
+                        <div>
+                            <button class="youtube-btn" data-id="${id}">
+                        </div>
                         <img class="filmcard__img"  
                             srcset="
                                 https://image.tmdb.org/t/p/w300/${poster_path}   300w,
@@ -135,23 +145,27 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                     </div>`;
            
     filmcard.innerHTML = modalEl;
-    openModal();
 }
 
 function openModal () {
     backdrop.classList.remove("is-hidden");
     document.body.style.overflow = 'hidden';
+    youTubeBtn = document.querySelector('.youtube-btn');
+
     modalCloseBtn.addEventListener("click", closeModal);
     document.addEventListener("click", closeModalByOutBackdropClick);
     document.addEventListener("keydown", closeModalByEsc);
+    youTubeBtn.addEventListener("click", onYouTubeBtnClick);
 }
 
 function closeModal() {
     backdrop.classList.add("is-hidden");
     document.body.style.overflow = 'overlay';
+
     modalCloseBtn.removeEventListener("click", closeModal);
     document.removeEventListener("click", closeModalByOutBackdropClick);
     document.removeEventListener("keydown", closeModalByEsc);
+    youTubeBtn.removeEventListener("click", onYouTubeBtnClick);
 }
 
 function closeModalByOutBackdropClick(e) {
@@ -164,6 +178,11 @@ function closeModalByEsc(e) {
     if (e.code === "Escape") {
         closeModal();
     }
+}
+
+function onYouTubeBtnClick(e) {
+    trailerApiService.filmID = Number(e.target.dataset.id);
+    trailerApiService.showTrailer();
 }
 
 //функціонал для ЛС
