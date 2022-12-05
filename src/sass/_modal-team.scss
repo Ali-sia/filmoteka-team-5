@@ -24,6 +24,9 @@
     }
     @media screen and (min-width: 1280px) {
       padding: 0 50px 35px 50px;
+      border-radius: 5%;
+
+      overflow: hidden;
     &_image {
       width: 100%;
       height: auto;
