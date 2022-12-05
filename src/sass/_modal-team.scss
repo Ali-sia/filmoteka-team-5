@@ -24,12 +24,14 @@
     }
     @media screen and (min-width: 1280px) {
       padding: 0 50px 35px 50px;
+    }
+
     &_item {
       width: calc((100% - 0 * 50px) / 1);
-      max-height: 297px;
+      //   max-height: 297px;
       @media screen and (min-width: 768px) {
         width: calc((100% - 1 * 50px) / 2);
-        max-height: 322px;
+        // max-height: 322px;
       }
       @media screen and (min-width: 1280px) {
         width: calc((100% - 2 * 50px) / 3);
@@ -44,6 +46,7 @@
       border-radius: 5%;
 
       overflow: hidden;
+    }
     &_image {
       width: 100%;
       height: auto;
@@ -61,3 +64,5 @@
     &_icon {
       margin-left: 10px;
     }
+  }
+}
