@@ -45,3 +45,5 @@ async function firstLoadPage() {
     // console.log(filmById)
 }
 
+//модальне вікно команди
+import './js/dom/modal-team';
