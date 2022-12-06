@@ -19,6 +19,7 @@ import { resetMarkup } from './js/dom/show-popular-films';
 export const filmsApiServise = new FilmsApiService();
 
 import './js/dom/modal';
+import './js/dom/scroll-btn';
 
 let currentPage = 1;
 resetMarkup()
