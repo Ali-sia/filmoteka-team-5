@@ -25,6 +25,7 @@ export const filmsApiServise = new FilmsApiService();
 import './js/dom/modal';
 //модальне вікно команди
 import './js/dom/modal-team';
+import './js/dom/scroll-btn';
 
 resetMarkup();
 firstLoadPage();
