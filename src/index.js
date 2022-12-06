@@ -20,7 +20,6 @@ export const filmsApiServise = new FilmsApiService();
 
 import './js/dom/modal';
 
-let currentPage = 1;
 resetMarkup()
 firstLoadPage()
 
@@ -31,7 +30,9 @@ async function firstLoadPage() {
     localStorage.setItem('genres', JSON.stringify(saveGenresLocalStorage))
 
     //робимо запит за популярними фільмами
-    const response = await filmsApiServise.fetchPopularFilms(currentPage)
+    filmsApiServise.setPage(1);
+    filmsApiServise.setIsPopular(true);
+    const response = await filmsApiServise.fetchPopularFilms()
     
     //робимо розмітку з популярних фільмів
     appendPopularMarkup(response)

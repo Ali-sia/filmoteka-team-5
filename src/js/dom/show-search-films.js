@@ -14,6 +14,9 @@ export function searchFilms() {
 function onSearch(event) {
     event.preventDefault();
 
+    filmsApiServise.setPage(1);
+    filmsApiServise.setIsPopular(false);
+
     let nameFilm = event.currentTarget.elements.input.value.trim();
     
     if (!nameFilm) {
@@ -21,7 +24,8 @@ function onSearch(event) {
         return;
     }
 
-    showFilms(nameFilm);
+    filmsApiServise.setNameFilm(nameFilm.replaceAll(" ", "+"));
+    showFilms();
 }
 
 function showErrorMessage() {
@@ -38,11 +42,11 @@ function showErrorMessage() {
     }, 5000);
 }
 
-async function showFilms(nameFilm) {
+async function showFilms() {
 
     let response = {};
     try {
-        response = await filmsApiServise.getFilmByName(nameFilm.replaceAll(" ", "+"));
+        response = await filmsApiServise.getFilmByName();
     } catch(error) {
         showErrorMessage();
         return;
