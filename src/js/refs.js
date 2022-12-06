@@ -4,7 +4,8 @@ const refs = {
     list: document.querySelector('.films__list'),
     backdrop: document.querySelector('.backdrop'),
     filmcard: document.querySelector('.filmcard'),
-    modalCloseBtn: document.querySelector(".modal-close-btn")
+    modalCloseBtn: document.querySelector(".modal-close-btn"),
+    btnScroll: document.querySelector('.scroll-btn'),
 };
 
 export const {
@@ -13,6 +14,7 @@ export const {
     backdrop,
     filmcard,
     modalCloseBtn,
+    btnScroll,
 } = refs;
 
 // тоді при import пишемо просто
