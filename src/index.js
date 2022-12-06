@@ -25,7 +25,6 @@ import './js/dom/modal';
 //модальне вікно команди
 import './js/dom/modal-team';
 
-let currentPage = 1;
 resetMarkup();
 firstLoadPage();
 
@@ -36,7 +35,9 @@ async function firstLoadPage() {
     localStorage.setItem('genres', JSON.stringify(saveGenresLocalStorage));
 
     //робимо запит за популярними фільмами
-    const response = await filmsApiServise.fetchPopularFilms(currentPage);
+    filmsApiServise.setPage(1);
+    filmsApiServise.setIsPopular(true);
+    const response = await filmsApiServise.fetchPopularFilms();
 
     //робимо розмітку з популярних фільмів
     appendPopularMarkup(response);
@@ -49,3 +50,6 @@ async function firstLoadPage() {
   // let filmById = filmsApiServise.getFilmById(897192)
   // console.log(filmById)
 }
+//Пагинация
+import { pagination } from './js/dom/pagination';
+pagination();
