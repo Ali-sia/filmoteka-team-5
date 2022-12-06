@@ -1,5 +1,6 @@
 // Подключение лоадера
 import './js/dom/loader';
+
 //Подчеркивание текущей страницы в хедере
 import { activePage } from './js/dom/activePage';
 activePage();
@@ -50,6 +51,12 @@ async function firstLoadPage() {
   // let filmById = filmsApiServise.getFilmById(897192)
   // console.log(filmById)
 }
+
 //Пагинация
 import { pagination } from './js/dom/pagination';
 pagination();
+
+
+import './js/dom/show-watch-films';
+import './js/dom/show-queue-films';
+
