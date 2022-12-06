@@ -1,4 +1,6 @@
-const btnScroll = document.querySelector('.scroll-btn');
+import { btnScroll } from '../refs';
+
+// const btnScroll = document.querySelector('.scroll-btn');
 btnScroll.addEventListener('click', topFunction);
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function () {
