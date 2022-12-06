@@ -1,5 +1,6 @@
 // Подключение лоадера
 import './js/dom/loader';
+
 //Подчеркивание текущей страницы в хедере
 import { activePage } from './js/dom/activePage';
 activePage();
@@ -25,7 +26,6 @@ import './js/dom/modal';
 //модальне вікно команди
 import './js/dom/modal-team';
 
-let currentPage = 1;
 resetMarkup();
 firstLoadPage();
 
@@ -36,7 +36,9 @@ async function firstLoadPage() {
     localStorage.setItem('genres', JSON.stringify(saveGenresLocalStorage));
 
     //робимо запит за популярними фільмами
-    const response = await filmsApiServise.fetchPopularFilms(currentPage);
+    filmsApiServise.setPage(1);
+    filmsApiServise.setIsPopular(true);
+    const response = await filmsApiServise.fetchPopularFilms();
 
     //робимо розмітку з популярних фільмів
     appendPopularMarkup(response);
@@ -50,5 +52,11 @@ async function firstLoadPage() {
   // console.log(filmById)
 }
 
+//Пагинация
+import { pagination } from './js/dom/pagination';
+pagination();
+
+
 import './js/dom/show-watch-films';
 import './js/dom/show-queue-films';
+
