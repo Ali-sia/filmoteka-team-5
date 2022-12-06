@@ -1,18 +1,24 @@
-<header class="header header__container--is-home">
-    <div class="container header__container">
-        <include src="./partials/header-nav.html"></include>
-        <form class="header__form" id="searchForm">
-            <input class="header__form-input" name="input" type="text" placeholder="Movie search" data-input/>
+<header class="header header__container--is-home" id="header">
+  <div class="container header__container">
+    <include src="./partials/header-nav.html"></include>
+    <form class="header__form" id="searchForm">
+      <input
+        class="header__form-input"
+        name="input"
+        type="text"
+        placeholder="Movie search"
+        data-input
+      />
 
-            <button class="header__form-submit" type="submit">
-                <svg class="img" width="12" height="12">
-                    <use href="./images/sprite.svg#icon-search"></use>
-                </svg>
-            </button>
-        </form>
+      <button class="header__form-submit" type="submit">
+        <svg class="img" width="12" height="12">
+          <use href="./images/sprite.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
 
-        <p class="header__message" data-alarmMessage>
-            Search result not successful. Enter the correct movie name and repeat
-        </p>
-    </div>
+    <p class="header__message" data-alarmMessage>
+      Search result not successful. Enter the correct movie name and repeat
+    </p>
+  </div>
 </header>
