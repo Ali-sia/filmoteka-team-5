@@ -49,3 +49,6 @@ async function firstLoadPage() {
   // let filmById = filmsApiServise.getFilmById(897192)
   // console.log(filmById)
 }
+
+import './js/dom/show-watch-films';
+import './js/dom/show-queue-films';
