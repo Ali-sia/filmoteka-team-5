@@ -89,7 +89,10 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
     
     const modalEl = `<div class="filmcard__img-thumb">
                         <div>
-                            <button class="youtube-btn" data-id="${id}">
+                            <button class="filmcard__youtube-btn" data-id="${id}">
+                                <div class="filmcard__youtube-btn-icon"></div>
+                                <span>watch trailer</span>
+                            </button>
                         </div>
                         <img class="filmcard__img"  
                             srcset="
@@ -150,7 +153,7 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
 function openModal () {
     backdrop.classList.remove("is-hidden");
     document.body.style.overflow = 'hidden';
-    youTubeBtn = document.querySelector('.youtube-btn');
+    youTubeBtn = document.querySelector('.filmcard__youtube-btn');
 
     modalCloseBtn.addEventListener("click", closeModal);
     document.addEventListener("click", closeModalByOutBackdropClick);
