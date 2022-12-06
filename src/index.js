@@ -3,6 +3,7 @@ import './js/dom/loader';
 //Подчеркивание текущей страницы в хедере
 import { activePage } from "./js/dom/activePage";
 activePage();
+import './js/dom/show-watch-films';
 
 //Активация кнопки в хедере страницы библиотеки
 import { activeLibraryBtn } from "./js/dom/activeLibraryBtn";
@@ -32,7 +33,7 @@ async function firstLoadPage() {
 
     //робимо запит за популярними фільмами
     const response = await filmsApiServise.fetchPopularFilms(currentPage)
-    
+
     //робимо розмітку з популярних фільмів
     appendPopularMarkup(response)
     } catch (error) {
@@ -41,7 +42,7 @@ async function firstLoadPage() {
     }
 
    //доступ до фільму по ID без повторного запиту на сервер, ID зберігається в дата атрибуті на карточці фільму --> data-films-id
-    // let filmById = filmsApiServise.getFilmById(897192) 
+    // let filmById = filmsApiServise.getFilmById(897192)
     // console.log(filmById)
 }
 
