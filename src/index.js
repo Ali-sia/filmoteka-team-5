@@ -45,3 +45,5 @@ async function firstLoadPage() {
     // console.log(filmById)
 }
 
+import './js/dom/show-watch-films';
+import './js/dom/show-queue-films';
