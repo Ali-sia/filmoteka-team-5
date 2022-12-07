@@ -1,4 +1,5 @@
 // відмалювати популярні фільми
+import { filmsApiServise } from '../..';
 import { list } from '../refs';
 import { markupPagination } from './markUpPagination';
 
@@ -82,6 +83,12 @@ export function resetMarkup() {
   list.innerHTML = '';
 }
 export function appendPopularMarkup(data) {
+  if (!data || data.length === 0) {
+    resetMarkup()
+    document.querySelector('.pagination__container').style.display = 'none';
+    appendEmptyStorageMessage();
+    return
+  }
   document.querySelector('.pagination__container').style.display = 'none';
   list.insertAdjacentHTML('beforeend', createPopularMarkup(data));
   markupPagination();
@@ -93,4 +100,10 @@ export function appendErrorMessage() {
     'beforeend',
     '<p>Unable to load images, please try again later.</p>'
   );
+}
+  export function appendEmptyStorageMessage() {
+  list.insertAdjacentHTML(
+    'beforeend',
+    '<p>Hey, could you please add some movies to the list?</p>'
+  )
 }

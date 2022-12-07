@@ -1,11 +1,10 @@
 // функції відкриття та закриття з modal.js
 // + рендер карток фільмів
-
 import { filmsApiServise } from "../../index";
 import { list, backdrop, filmcard, modalCloseBtn } from "../refs";
-import WatchedFilmsStorage from '../storage/add-to-watced';
-import QueueFilmsStorage from '../storage/add-to-queue';
 import TrailerApiService from "../api/getting-trailer";
+import { watchedFilmsStorage, onWatchedLibClick } from './show-watch-films';
+import { queueFilmsStorage, onQueueLibClick } from './show-queue-films';
 
 let addToWatchedBtn;
 let addToQueueBtn;
@@ -13,8 +12,8 @@ let removeFromWatchedBtn;
 let removeFromQueueBtn;
 let youTubeBtn;
 let currentFilm = {};
-const watchedStorage = new WatchedFilmsStorage();
-const queueStorage = new QueueFilmsStorage();
+// const watchedFilmsStorage = new WatchedFilmsStorage();
+// const queueFilmsStorage = new QueueFilmsStorage();
 const trailerApiService = new TrailerApiService();
 
 // function findCurrentFilm(id) {
@@ -57,11 +56,11 @@ function createModal(e) {
     removeFromQueueBtn.addEventListener('click', removeFromQueueLS);
     
 
-    if (watchedStorage.checkFilmInWatchedLocStor(currentFilm)) {
+    if (watchedFilmsStorage.checkFilmInWatchedLocStor(currentFilm)) {
         addToWatchedBtn.classList.add('is-hidden');
         removeFromWatchedBtn.classList.remove('is-hidden');
     }
-    if (queueStorage.checkFilmInQueueLocStor(currentFilm)) {
+    if (queueFilmsStorage.checkFilmInQueueLocStor(currentFilm)) {
         addToQueueBtn.classList.add('is-hidden');
         removeFromQueueBtn.classList.remove('is-hidden');
     }
@@ -187,32 +186,35 @@ function onYouTubeBtnClick(e) {
 
 //функціонал для ЛС
 function addToWatchedLS() {
-  watchedStorage.refreshData();
-
-  watchedStorage.addToWatchedFilms(currentFilm);
-  watchedStorage.saveWatchedFilms();
+  watchedFilmsStorage.refreshData();
+  watchedFilmsStorage.addToWatchedFilms(currentFilm);
+  watchedFilmsStorage.saveWatchedFilms();
 
   addToWatchedBtn.classList.add('is-hidden');
-  removeFromWatchedBtn.classList.remove('is-hidden');
+    removeFromWatchedBtn.classList.remove('is-hidden');
+    if (filmsApiServise.isWatchedOpen) { onWatchedLibClick()}; 
 }
 
 function addToQueueLS() {
-  queueStorage.myAddToQueueFilms(currentFilm);
+  queueFilmsStorage.myAddToQueueFilms(currentFilm);
 
   addToQueueBtn.classList.add('is-hidden');
-  removeFromQueueBtn.classList.remove('is-hidden');
+    removeFromQueueBtn.classList.remove('is-hidden');
+    if (filmsApiServise.isQueueOpen) { onQueueLibClick() };
 }
 
 function removeFromWatchedLS() {
   addToWatchedBtn.classList.remove('is-hidden');
   removeFromWatchedBtn.classList.add('is-hidden');
 
-  watchedStorage.removeFromWatched(currentFilm);
+    watchedFilmsStorage.removeFromWatched(currentFilm);
+    if (filmsApiServise.isWatchedOpen) { onWatchedLibClick() };
 }
 
 function removeFromQueueLS() {
   addToQueueBtn.classList.remove('is-hidden');
   removeFromQueueBtn.classList.add('is-hidden');
 
-  queueStorage.removeFromQueue(currentFilm);
+    queueFilmsStorage.removeFromQueue(currentFilm);
+    if (filmsApiServise.isQueueOpen) { onQueueLibClick() };
 }
