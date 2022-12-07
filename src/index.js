@@ -16,11 +16,15 @@ import {
 import './js/dom/modal';
 //модальне вікно команди
 import './js/dom/modal-team';
+
+import './js/dom/scroll-btn';
+
 import './js/dom/show-watch-films';
 import './js/dom/show-queue-films';
 import { onWatchedLibClick } from './js/dom/show-watch-films';
 import { pagination } from './js/dom/pagination';
 import { watchedFilmsStorage } from './js/dom/show-watch-films';
+
 
 export const filmsApiServise = new FilmsApiService();
 
