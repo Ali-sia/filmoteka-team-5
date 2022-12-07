@@ -1,20 +1,20 @@
 import {filmsApiServise} from '../../index';
 
 export function markupPagination() {
+    console.log("window.screen.width ", window.screen.width);
+    console.log("filmsApiServise.getPage() != 1 ", filmsApiServise.getPage() != 1);
+    console.log("window.screen.width >= 768 ", window.screen.width >= 768);
+    console.log("filmsApiServise.getPage() != 1 && window.screen.width >= 768", filmsApiServise.getPage() != 1 && window.screen.width >= 768);
     //Скрытие ненужных кнопок
-    if (filmsApiServise.getPage() === 1) {
-        document.querySelector('.pagination__button--button1').style.display = "none";
-    } else {
+    if (filmsApiServise.getPage() != 1 && window.screen.width >= 768) {
         document.querySelector('.pagination__button--button1').style.display = "block";
-    }
-
-    if (filmsApiServise.getPage() === 1) {
-        document.querySelector('.pagination__item--item2').style.display = "none";
-    } else {
         document.querySelector('.pagination__item--item2').style.display = "block";
+    } else {
+        document.querySelector('.pagination__button--button1').style.display = "none";
+        document.querySelector('.pagination__item--item2').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() > 4) {
+    if (filmsApiServise.getPage() > 4 && window.screen.width >= 768) {
         document.querySelector('.pagination__item--item3').style.display = "block";
     } else {
         document.querySelector('.pagination__item--item3').style.display = "none";
@@ -44,22 +44,18 @@ export function markupPagination() {
         document.querySelector('.pagination__item--item8').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() + 3 < filmsApiServise.getTotalPages()) {
+    if (filmsApiServise.getPage() + 3 < filmsApiServise.getTotalPages() && window.screen.width >= 768) {
         document.querySelector('.pagination__item--item9').style.display = "block";
     } else {
         document.querySelector('.pagination__item--item9').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() != filmsApiServise.getTotalPages()) {
+    if (filmsApiServise.getPage() != filmsApiServise.getTotalPages() && window.screen.width >= 768) {
         document.querySelector('.pagination__item--item10').style.display = "block";
+        document.querySelector('.pagination__button--button8').style.display = "block";
     } else {
         document.querySelector('.pagination__item--item10').style.display = "none";
-    }
-
-    if (filmsApiServise.getPage() === filmsApiServise.getTotalPages()) {
         document.querySelector('.pagination__button--button8').style.display = "none";
-    } else {
-        document.querySelector('.pagination__button--button8').style.display = "block";
     }
 
     //Заполнение значениями кнопки
