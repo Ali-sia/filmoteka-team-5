@@ -1,9 +1,9 @@
-window.addEventListener('load', () => setTimeout (function() {
-    const loader = document.querySelector('.loader');
-    // console.log(loader)
-    loader.classList.add('loader--hidden');
-    loader.addEventListener('transitionend', () => {
-    document.body.removeChild(loader);
-  })
-}, 500)
-);
+const loader = document.querySelector('.loader__bg');
+
+export function showLoader() {
+  loader.classList.remove('loader--hidden');
+}
+
+export function hideLoader() {
+  setTimeout(()=>{loader.classList.add('loader--hidden');}, 500);
+}
