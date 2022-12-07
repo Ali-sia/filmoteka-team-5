@@ -109,61 +109,109 @@
   }
 }
 
-.filmcard__youtube-btn {
-  display: inline-flex;
+.youtube-btn {
   position: absolute;
-  top: 20px;
+  top: 10px;
+  z-index: 2;
+  display: inline-flex;
   align-items: center;
-  z-index: 1;
   width: 100%;
-  height: 60px;
-  cursor: pointer;
+  height: 50px;
+  
+  overflow: hidden;
   border: 0;
   outline: none;
+  cursor: pointer;
   background-color: transparent;
-   
+
   &:hover {
-    background-color: rgba(0, 0, 0, .5);
-    color: var(--main-color);
+      background-color: rgba(0, 0, 0, .5);
     }
-}
 
-.filmcard__youtube-btn-icon {
-  display: block;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background-color:rgba(255, 255, 255, .6);
-  margin: 10px;
-}
+  &__icon {
+    display: block;
+    height: 34px;
+    width: 50px;
+    margin: 10px;
 
-.filmcard__youtube-btn-icon:before {        
-  background-size: 24px 29px;
-  background-repeat: no-repeat;
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  margin-top: -15px;
-  margin-left: 10px;
-  width: 24px;
-  height: 29px;
-  z-index: 2;
-  opacity: 0.7;
-  background-image: url(/src/images/show-trailer-icon.svg);
-}
+    border-radius: 16%;
+    background-color: var(--color-active-button);
+    opacity: 0.7;
+    transition: opacity 500ms;
 
-.filmcard__youtube-btn span {
-  color: transparent;
-  font-size: 20px;
-  text-transform: uppercase;
+    .youtube-btn:hover & {
+      opacity: 1;
+    }
+  }
 
-  .filmcard__youtube-btn:hover & {
+  &__icon:before { 
+    position: absolute;
+    top: 50%;   
+    z-index: 3;   
+    display: block;    
+    margin-top: -8px;
+    margin-left: 19px;
+    width: 15px;
+    height: 15px; 
+
+    content: "";
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-image: url(/src/images/show-trailer-icon.svg);
+    opacity: 0.7;
+    transition: opacity 500ms;
+      
+    .youtube-btn:hover & {
+        opacity: 1;
+      }
+  }
+
+  &__overlay-wrapper {
+    position: relative;
+    width: calc(100% - 70px);
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transform: translateX(-101%);
+    transition: 500ms;
+
+    .youtube-btn:hover & {
+      transform: translateX(0);
+    }
+  }
+
+  &__title {
+    text-transform: uppercase; 
+    font-size: 20px;
+    line-height: 23px;
     color: var(--main-color);
   }
 }
 
+.youtube-modal {
+  min-width: 280px;
+  min-height: 166px;
 
+  @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+    min-width: 760px;
+    min-height: 450px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    min-width: 1000px;
+    min-height: 595px;
+  }
+}
 
 .filmcard__img {
   width: 100%;

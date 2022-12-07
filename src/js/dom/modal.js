@@ -89,9 +89,15 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
     
     const modalEl = `<div class="filmcard__img-thumb">
                         <div>
-                            <button class="filmcard__youtube-btn" data-id="${id}">
-                                <div class="filmcard__youtube-btn-icon"></div>
-                                <span>watch trailer</span>
+                            <button class="youtube-btn" data-id="${id}">  
+                                <div class="youtube-btn__icon"></div>                          
+                                <div class="youtube-btn__overlay-wrapper">
+                                    <div class="youtube-btn__overlay">
+                                        <p class="youtube-btn__title">
+                                            watch trailer
+                                        </p>
+                                    </div>
+                                </div>
                             </button>
                         </div>
                         <img class="filmcard__img"  
@@ -153,7 +159,7 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
 function openModal () {
     backdrop.classList.remove("is-hidden");
     document.body.style.overflow = 'hidden';
-    youTubeBtn = document.querySelector('.filmcard__youtube-btn');
+    youTubeBtn = document.querySelector('.youtube-btn');
 
     modalCloseBtn.addEventListener("click", closeModal);
     document.addEventListener("click", closeModalByOutBackdropClick);
@@ -184,7 +190,7 @@ function closeModalByEsc(e) {
 }
 
 function onYouTubeBtnClick(e) {
-    trailerApiService.filmID = Number(e.target.dataset.id);
+    trailerApiService.filmID = Number(e.currentTarget.dataset.id);
     trailerApiService.showTrailer();
 }
 

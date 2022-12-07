@@ -1,7 +1,10 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { API_KEY } from './api-key';
+
+
 
 export default class TrailerApiService {
     constructor() { 
@@ -9,11 +12,16 @@ export default class TrailerApiService {
     }
      
     async showTrailer() { 
+        Notify.init({
+            position: 'center-top',
+        });
+
         try {
             const data = await this.fetchTrailer();
 
             if (data.length === 0 || data === undefined) {
-                alert('Sorry, trailer not found.');
+                console.log(data.length);
+                Notify.failure('Sorry, trailer not found.');
                 return;
             }
 
@@ -23,23 +31,23 @@ export default class TrailerApiService {
                     if (element.name.includes("Official")) {
                         key = element.key;
                         return; 
-                    } else { 
-                        key = element.key;
-                        return ;
                     }
                 }
             });
-            console.log(key);
+
+            if (!key) {
+               key = data[0].key; 
+            }
 
             const instance = basicLightbox.create(`
-                <div class="youtube-modal">
-                    <iframe src="https://www.youtube.com/embed/${key}" width="640" height="480" frameborder="0" allowfullscreen></iframe>
+                <div>
+                    <iframe class="youtube-modal" src="https://www.youtube.com/embed/${key}" frameborder="0" allowfullscreen></iframe>
                 </div>
             `);
 
             instance.show();
-        } catch { 
-
+        } catch(error) { 
+            Notify.failure('Sorry, trailer not found.');
         }
     }
 
