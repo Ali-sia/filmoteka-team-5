@@ -1,8 +1,8 @@
 // відмалювати фільми з списку "watched"
 import { resetMarkup } from './show-popular-films';
 import { appendPopularMarkup } from './show-popular-films';
-import { createPopularMarkup } from './show-popular-films';
 import WatchedFilmsStorage from '../storage/add-to-watced';
+
 import { getElement } from './getElement';
 
 if (getElement('.header__libraryWatchBtn')) {
@@ -26,3 +26,4 @@ function onWatchedLibClick() {
   createPopularMarkup(watchedList);
   appendPopularMarkup(watchedList);
 }
+
