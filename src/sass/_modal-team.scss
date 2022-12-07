@@ -3,7 +3,6 @@
   height: 90vh;
 
   min-width: 280px;
-
   @media screen and (min-width: 768px) {
     min-width: 704px;
   }
@@ -21,6 +20,7 @@
 
     text-align: center;
   }
+
   &-list {
     padding: 0 20px 40px 20px;
     @media screen and (min-width: 768px) {
@@ -86,9 +86,6 @@
       position: relative;
 
       max-height: 297px;
-      @media screen and (min-width: 768px) {
-        max-height: 322px;
-      }
 
       margin-bottom: 10px;
       border-radius: 5%;
@@ -118,14 +115,17 @@
 
     &_link:hover &_overlay,
     &_link:focus &_overlay {
-      transform: translateY(0);
+      transform: translateY(1.5%);
     }
 
     &_text {
-      display: flex;
+      width: 100%;
+
+      text-align: center;
 
       margin-bottom: 5px;
 
+      background-color: rgb(0, 0, 0, 0.5);
       color: var(--main-color);
 
       font-size: 28px;
@@ -133,28 +133,27 @@
         font-size: 32px;
       }
 
-      img {
-        margin-left: 10px;
+      // p {
+      //   opacity: 1;
+      // }
 
-        height: 30px;
-        width: 30px;
+      // img {
+      //   margin-left: 10px;
 
-        @media screen and (min-width: 768px) {
-          height: 35px;
-          width: 35px;
-        }
-      }
+      //   height: 30px;
+      //   width: 30px;
+
+      //   @media screen and (min-width: 768px) {
+      //     height: 35px;
+      //     width: 35px;
+      //   }
+      // }
     }
 
     &_image {
       width: 100%;
-      height: auto;
+      height: 297px;
       object-fit: cover;
-    }
-
-    .overlay-img {
-      height: 300px;
-      width: 200px;
     }
 
     &_info {
