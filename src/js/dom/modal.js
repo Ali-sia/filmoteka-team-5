@@ -159,7 +159,7 @@ function openModal () {
 
 function closeModal() {
     backdrop.classList.add("is-hidden");
-    document.body.style.overflow = 'overlay';
+    document.body.style.overflow = 'scroll';
 
     modalCloseBtn.removeEventListener("click", closeModal);
     document.removeEventListener("click", closeModalByOutBackdropClick);
