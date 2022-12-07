@@ -115,14 +115,17 @@
 
     &_link:hover &_overlay,
     &_link:focus &_overlay {
-      transform: translateY(0);
+      transform: translateY(1.5%);
     }
 
     &_text {
-      display: flex;
+      width: 100%;
+
+      text-align: center;
 
       margin-bottom: 5px;
 
+      background-color: rgb(0, 0, 0, 0.5);
       color: var(--main-color);
 
       font-size: 28px;
@@ -130,17 +133,21 @@
         font-size: 32px;
       }
 
-      img {
-        margin-left: 10px;
+      // p {
+      //   opacity: 1;
+      // }
 
-        height: 30px;
-        width: 30px;
+      // img {
+      //   margin-left: 10px;
 
-        @media screen and (min-width: 768px) {
-          height: 35px;
-          width: 35px;
-        }
-      }
+      //   height: 30px;
+      //   width: 30px;
+
+      //   @media screen and (min-width: 768px) {
+      //     height: 35px;
+      //     width: 35px;
+      //   }
+      // }
     }
 
     &_image {
