@@ -2,6 +2,7 @@
 const refs = {
   exampleEl: document.querySelector('.example'),
   list: document.querySelector('.films__list'),
+  libraryList: document.querySelector('.films__library'),
   backdrop: document.querySelector('.backdrop'),
   filmcard: document.querySelector('.filmcard'),
   modalCloseBtn: document.querySelector('.modal-close-btn'),

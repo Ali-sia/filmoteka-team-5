@@ -4,11 +4,9 @@ import './js/dom/loader';
 //Подчеркивание текущей страницы в хедере
 import { activePage } from './js/dom/activePage';
 activePage();
-
 //Активация кнопки в хедере страницы библиотеки
 import { activeLibraryBtn } from './js/dom/activeLibraryBtn';
 activeLibraryBtn();
-
 //Пошук за назвою
 import { searchFilms } from './js/dom/show-search-films';
 searchFilms();
@@ -56,7 +54,5 @@ async function firstLoadPage() {
 import { pagination } from './js/dom/pagination';
 pagination();
 
-
 import './js/dom/show-watch-films';
 import './js/dom/show-queue-films';
-
