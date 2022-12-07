@@ -1,19 +1,27 @@
+
 <header class="header header__container--is-library" id="header">
-    <div class="container header__container">
-        <include src="./partials/header-nav.html"></include>
-        
-        <ul class="list header__list header__libraryListBunnon">
-            <li class="header__libraryButton--position">
-                <button class="header__libraryButton header__libraryWatchBtn" type="button">
-                    Watched
-                </button>
-            </li>
-            
-            <li class="header__libraryButton--position">
-                <button class="header__libraryButton header__libraryQueueBtn" type="button">
-                    Queue
-                </button>
-            </li>
-        </ul>
-    </div>
+  <div class="container header__container">
+    <include src="./partials/header-nav.html"></include>
+
+    <ul class="list header__list header__libraryListBunnon">
+      <li class="header__libraryButton--position">
+        <button
+          class="header__libraryButton header__libraryWatchBtn header__libraryButton--isActive"
+          type="button"
+          disabled
+        >
+          Watched
+        </button>
+      </li>
+
+      <li class="header__libraryButton--position">
+        <button
+          class="header__libraryButton header__libraryQueueBtn"
+          type="button"
+        >
+          Queue
+        </button>
+      </li>
+    </ul>
+  </div>
 </header>

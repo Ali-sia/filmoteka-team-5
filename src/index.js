@@ -2,15 +2,8 @@
 import './js/dom/loader';
 //Подчеркивание текущей страницы в хедере
 import { activePage } from './js/dom/activePage';
-
 //Активация кнопки в хедере страницы библиотеки
 import { activeLibraryBtn } from './js/dom/activeLibraryBtn';
-
-activePage();
-//Активация кнопки в хедере страницы библиотеки
-import { activeLibraryBtn } from './js/dom/activeLibraryBtn';
-activeLibraryBtn();
-
 //Пошук за назвою
 import { searchFilms } from './js/dom/show-search-films';
 import FilmsApiService from './js/api/api-server';
@@ -39,8 +32,10 @@ activePage();
 activeLibraryBtn();
 searchFilms();
 pagination();
+loadPage();
 
- if (document.querySelector(".header__container--is-home")) {
+function loadPage() {
+   if (document.querySelector(".header__container--is-home")) {
    firstLoadPage();
 }
     
@@ -48,6 +43,7 @@ if (document.querySelector(".header__container--is-library")) {
   filmsApiServise.setData(watchedFilmsStorage.getWathedFilmsList());
     onWatchedLibClick();
   filmsApiServise.setWathedOpen();
+}
 }
 
 async function firstLoadPage() {
@@ -67,19 +63,4 @@ async function firstLoadPage() {
     console.log(error.message);
     appendErrorMessage();
   }
-
-};
-
-
-  //доступ до фільму по ID без повторного запиту на сервер, ID зберігається в дата атрибуті на карточці фільму --> data-films-id
-  // let filmById = filmsApiServise.getFilmById(897192)
-  // console.log(filmById)
 }
-
-
-import { pagination } from './js/dom/pagination';
-pagination();
-
-import './js/dom/show-watch-films';
-import './js/dom/show-queue-films';
-
