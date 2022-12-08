@@ -1,6 +1,6 @@
 // відмалювати популярні фільми
 import { filmsApiServise } from '../..';
-import { list } from '../refs';
+import { list, btnScroll } from '../refs';
 import { markupPagination } from './markUpPagination';
 import {showLoader, hideLoader} from './loader';
 
@@ -86,19 +86,22 @@ export function resetMarkup() {
 export function appendPopularMarkup(data) {
   showLoader();
 
-  setTimeout(()=>{
+ setTimeout(() => {
     if (!data || data.length === 0) {
-      resetMarkup()
+      resetMarkup();
       document.querySelector('.pagination__container').style.display = 'none';
       appendEmptyStorageMessage();
       hideLoader();
-      return
+      return;
     }
-  
     document.querySelector('.pagination__container').style.display = 'none';
     list.insertAdjacentHTML('beforeend', createPopularMarkup(data));
     markupPagination();
     document.querySelector('.pagination__container').style.display = 'block';
+
+    if (btnScroll) {
+      btnScroll.click();
+    }
 
     hideLoader();
   }, 250);
