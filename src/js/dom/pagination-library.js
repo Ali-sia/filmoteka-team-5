@@ -19,7 +19,7 @@ async function onClick(event) {
     return;
     }
 
-    watchedList = [];
+    let watchedList = [];
     if (filmsApiServise.isWatchedOpen) {
         watchedList = watchedFilmsStorage.getWathedFilmsList();
     } else {
