@@ -12,6 +12,7 @@ let addToWatchedBtn;
 let addToQueueBtn;
 let removeFromWatchedBtn;
 let removeFromQueueBtn;
+let backdropImg;
 let modalCloseBtn;
 let youTubeBtn;
 let currentFilm = {};
@@ -175,6 +176,7 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
 function openModal () {
     backdrop.classList.remove("is-hidden");
     document.body.style.overflow = 'hidden';
+    backdropImg = document.querySelector('.backdrop__img');
     modalCloseBtn = document.querySelector('.modal-close-btn');
     youTubeBtn = document.querySelector('.youtube-btn');
 
@@ -195,7 +197,7 @@ function closeModal() {
 }
 
 function closeModalByOutBackdropClick(e) {
-    if (e.currentTarget === backdrop) {
+    if (e.target === backdropImg || e.target === backdrop ) {
         closeModal();
     }
 }
