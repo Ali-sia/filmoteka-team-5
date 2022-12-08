@@ -87,4 +87,8 @@ export default class FilmsApiService {
     this.isWatchedOpen = 0;
      this.isQueueOpen = 1;
   }
+
+  setTotalPages(totalPages) {
+    this.totalPages = totalPages;
+  }
 }
