@@ -85,19 +85,23 @@ export function resetMarkup() {
 }
 export function appendPopularMarkup(data) {
   showLoader();
-  if (!data || data.length === 0) {
-    resetMarkup()
-    document.querySelector('.pagination__container').style.display = 'none';
-    appendEmptyStorageMessage();
-    hideLoader();
-    return
-  }
-  document.querySelector('.pagination__container').style.display = 'none';
-  list.insertAdjacentHTML('beforeend', createPopularMarkup(data));
-  markupPagination();
-  document.querySelector('.pagination__container').style.display = 'block';
 
-  hideLoader();
+  setTimeout(()=>{
+    if (!data || data.length === 0) {
+      resetMarkup()
+      document.querySelector('.pagination__container').style.display = 'none';
+      appendEmptyStorageMessage();
+      hideLoader();
+      return
+    }
+  
+    document.querySelector('.pagination__container').style.display = 'none';
+    list.insertAdjacentHTML('beforeend', createPopularMarkup(data));
+    markupPagination();
+    document.querySelector('.pagination__container').style.display = 'block';
+
+    hideLoader();
+  }, 250);
 }
 
 export function appendErrorMessage() {
