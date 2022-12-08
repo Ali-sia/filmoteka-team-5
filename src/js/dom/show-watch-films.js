@@ -15,9 +15,10 @@ export function onWatchedLibClick() {
 
     if (!watchedList) {
         appendEmptyStorageMessage();
+        document.querySelector('.pagination__container').style.display = "none";
         return;
     }
-    
+
     //console.log('to check', watchedList);
     const totalItems = watchedList.length;
     //console.log('items number', totalItems);

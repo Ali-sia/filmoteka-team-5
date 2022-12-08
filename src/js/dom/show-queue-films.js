@@ -14,9 +14,10 @@ export function onQueueLibClick() {
 
     if (!queueList) {
         appendEmptyStorageMessage();
+        document.querySelector('.pagination__container').style.display = "none";
         return;
     }
-    
+
     const totalItems = queueList.length;
     const totalPages = Math.ceil(totalItems / 20);
 
