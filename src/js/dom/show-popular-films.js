@@ -2,7 +2,7 @@
 import { filmsApiServise } from '../..';
 import { list, btnScroll } from '../refs';
 import { markupPagination } from './markUpPagination';
-import {showLoader, hideLoader} from './loader';
+import { showLoader, hideLoader } from './loader';
 
 export function createPopularMarkup(data) {
   return data
@@ -86,7 +86,7 @@ export function resetMarkup() {
 export function appendPopularMarkup(data) {
   showLoader();
 
- setTimeout(() => {
+  setTimeout(() => {
     if (!data || data.length === 0) {
       resetMarkup();
       document.querySelector('.pagination__container').style.display = 'none';
@@ -94,7 +94,6 @@ export function appendPopularMarkup(data) {
       hideLoader();
       return;
     }
-    document.querySelector('.pagination__container').style.display = 'none';
     list.insertAdjacentHTML('beforeend', createPopularMarkup(data));
     markupPagination();
     document.querySelector('.pagination__container').style.display = 'block';
@@ -113,9 +112,9 @@ export function appendErrorMessage() {
     '<p>Unable to load images, please try again later.</p>'
   );
 }
-  export function appendEmptyStorageMessage() {
+export function appendEmptyStorageMessage() {
   list.insertAdjacentHTML(
     'beforeend',
     '<p>Hey, could you please add some movies to the list?</p>'
-  )
+  );
 }
