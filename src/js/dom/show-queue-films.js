@@ -19,7 +19,7 @@ export function onQueueLibClick() {
     let response = [];
     if (totalPages > 1) {
         response = queueList.slice(0, 20);
-      } else if (targetPage === pages) {
+      } else {
         response = queueList;
     }
     
