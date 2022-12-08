@@ -10,7 +10,7 @@ import FilmsApiService from './js/api/api-server';
 import {
   appendPopularMarkup,
   appendErrorMessage,
-  appendEmptyStorageMessage
+  appendEmptyStorageMessage,
 } from './js/dom/show-popular-films';
 
 import './js/dom/modal';
@@ -24,7 +24,7 @@ import './js/dom/show-queue-films';
 import { onWatchedLibClick } from './js/dom/show-watch-films';
 import { pagination } from './js/dom/pagination';
 import { watchedFilmsStorage } from './js/dom/show-watch-films';
-
+import { paginationLibrary } from './js/dom/pagination-library';
 
 export const filmsApiServise = new FilmsApiService();
 
@@ -35,15 +35,15 @@ pagination();
 loadPage();
 
 function loadPage() {
-   if (document.querySelector(".header__container--is-home")) {
-   firstLoadPage();
-}
-    
-if (document.querySelector(".header__container--is-library")) {
-  filmsApiServise.setData(watchedFilmsStorage.getWathedFilmsList());
+  if (document.querySelector('.header__container--is-home')) {
+    firstLoadPage();
+  }
+
+  if (document.querySelector('.header__container--is-library')) {
+    filmsApiServise.setWathedOpen();
+    paginationLibrary();
     onWatchedLibClick();
-  filmsApiServise.setWathedOpen();
-}
+  }
 }
 
 async function firstLoadPage() {

@@ -4,8 +4,14 @@ import { API_KEY } from './api-key';
 
 export default class FilmsApiService {
   constructor() {
-    (this.totalPages = 0), (this.page = 0), (this.isPopular = false),
-    (this.nameFilm = ''), (this.data = []), (this.genres = []), (this.isWatchedOpen = 0), (this.isQueueOpen = 0)
+    (this.totalPages = 0),
+      (this.page = 0),
+      (this.isPopular = false),
+      (this.nameFilm = ''),
+      (this.data = []),
+      (this.genres = []),
+      (this.isWatchedOpen = 0),
+      (this.isQueueOpen = 0);
   }
   async fetchPopularFilms() {
     const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
@@ -66,7 +72,9 @@ export default class FilmsApiService {
   setPage(page) {
     this.page = page;
   }
-
+  setTotalPages(totalPages) {
+    this.totalPages = totalPages;
+  }
   setIsPopular(isPopular) {
     this.isPopular = isPopular;
   }
@@ -81,10 +89,10 @@ export default class FilmsApiService {
 
   setWathedOpen() {
     this.isWatchedOpen = 1;
-     this.isQueueOpen = 0;
+    this.isQueueOpen = 0;
   }
-   setQueueOpen() {
+  setQueueOpen() {
     this.isWatchedOpen = 0;
-     this.isQueueOpen = 1;
+    this.isQueueOpen = 1;
   }
 }
