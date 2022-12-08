@@ -195,8 +195,6 @@ function closeModal() {
 }
 
 function closeModalByOutBackdropClick(e) {
-    console.log(e.currentTarget);
-    console.log(backdrop);
     if (e.currentTarget === backdrop) {
         closeModal();
     }
