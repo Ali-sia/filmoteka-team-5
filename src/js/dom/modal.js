@@ -90,12 +90,13 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
             id,
             backdrop_path,
     } = filmData;
-    
+
     const backdropEl = `
-                    <div class='backdrop__img' style="background-image:linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
-                              url('https://image.tmdb.org/t/p/original/${backdrop_path}');
-                              background-size:cover; 
-                              background-position: center;">
+                    <div class='backdrop__img' 
+                        style="background-image:
+                            linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+                            url('https://image.tmdb.org/t/p//w780/${backdrop_path}');
+                        ">
                     </div>
                     <div class="modal-wrapper">
                         <div class="filmcard">
