@@ -38,13 +38,13 @@ async function onClick(event) {
   let startArraySlice = 0;
   let endArraySlice = 0;
   if (
-    event.target.classList.contains('pagination__button--button1') &&
+    event.target.classList.contains('pagination__button--button1') ||
     event.target.classList.contains('pagination__img1')
   ) {
     document.querySelector('.pagination__button--button1').blur();
     targetPage -= 1;
   } else if (
-    event.target.classList.contains('pagination__button--button8') &&
+    event.target.classList.contains('pagination__button--button8') ||
     event.target.classList.contains('pagination__img2')
   ) {
     document.querySelector('.pagination__button--button8').blur();
