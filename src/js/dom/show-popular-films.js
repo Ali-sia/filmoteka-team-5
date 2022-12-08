@@ -1,6 +1,6 @@
 // відмалювати популярні фільми
 import { filmsApiServise } from '../..';
-import { list } from '../refs';
+import { list, btnScroll } from '../refs';
 import { markupPagination } from './markUpPagination';
 import {showLoader, hideLoader} from './loader';
 
@@ -97,6 +97,10 @@ export function appendPopularMarkup(data) {
   markupPagination();
   document.querySelector('.pagination__container').style.display = 'block';
 
+  if (btnScroll) {
+    btnScroll.click();
+  };
+  
   hideLoader();
 }
 
