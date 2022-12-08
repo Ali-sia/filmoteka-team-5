@@ -32,8 +32,26 @@ function createModal(e) {
         return;
     }
 
+    let filmData = null;
     const filmID = Number(filmCard.dataset.filmsId);
-    const filmData = filmsApiServise.getFilmById(filmID) 
+    console.log(filmID);
+
+    if (filmsApiServise.isWatchedOpen) {
+        watchedFilmsStorage.getWathedFilmsList().map(film => {
+            console.log()
+            if (film.id === filmID) {
+                filmData = film;
+            }
+        });
+    } else if (filmsApiServise.isQueueOpen) {
+        queueFilmsStorage.getQueueFilmsList().map(film => {
+            if (film.id === filmID) {
+                filmData = film;
+            }
+        });
+    } else {
+        filmData = filmsApiServise.getFilmById(filmID);
+    } 
 
     let filmGenresNames = "unknown";
     if (filmData.genre_ids) {
