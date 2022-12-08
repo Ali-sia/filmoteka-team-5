@@ -13,7 +13,7 @@ function openModalTeam() {
 
 function closeModal() {
   backdropModalTeam.classList.add('is-hidden');
-  document.body.style.overflow = 'overlay';
+  document.body.style.overflow = 'scroll';
   modalCloseBtnTeam.removeEventListener('click', closeModal);
   document.removeEventListener('click', closeModalByOutBackdropClick);
   document.removeEventListener('keydown', closeModalByEsc);
