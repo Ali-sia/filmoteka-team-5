@@ -1,10 +1,6 @@
 import {filmsApiServise} from '../../index';
 
 export function markupPagination() {
-    console.log("window.screen.width ", window.screen.width);
-    console.log("filmsApiServise.getPage() != 1 ", filmsApiServise.getPage() != 1);
-    console.log("window.screen.width >= 768 ", window.screen.width >= 768);
-    console.log("filmsApiServise.getPage() != 1 && window.screen.width >= 768", filmsApiServise.getPage() != 1 && window.screen.width >= 768);
     //Скрытие ненужных кнопок
     if (filmsApiServise.getPage() != 1 && window.screen.width >= 768) {
         document.querySelector('.pagination__button--button1').style.display = "block";

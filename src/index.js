@@ -24,7 +24,7 @@ import './js/dom/show-queue-films';
 import { onWatchedLibClick } from './js/dom/show-watch-films';
 import { pagination } from './js/dom/pagination';
 import { watchedFilmsStorage } from './js/dom/show-watch-films';
-
+import { paginationLibrary } from './js/dom/pagination-library';
 
 export const filmsApiServise = new FilmsApiService();
 
@@ -40,9 +40,8 @@ function loadPage() {
 }
     
 if (document.querySelector(".header__container--is-library")) {
-  filmsApiServise.setData(watchedFilmsStorage.getWathedFilmsList());
-    onWatchedLibClick();
-  filmsApiServise.setWathedOpen();
+  paginationLibrary();
+  onWatchedLibClick();
 }
 }
 
