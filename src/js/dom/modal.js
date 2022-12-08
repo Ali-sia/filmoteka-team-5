@@ -34,11 +34,9 @@ function createModal(e) {
 
     let filmData = null;
     const filmID = Number(filmCard.dataset.filmsId);
-    console.log(filmID);
 
     if (filmsApiServise.isWatchedOpen) {
         watchedFilmsStorage.getWathedFilmsList().map(film => {
-            console.log()
             if (film.id === filmID) {
                 filmData = film;
             }
