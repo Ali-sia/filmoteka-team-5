@@ -21,7 +21,7 @@ export function onWatchedLibClick() {
     let response = [];
     if (totalPages > 1) {
         response = watchedList.slice(0, 20);
-      } else if (targetPage === pages) {
+      } else {
         response = watchedList;
         }
     
