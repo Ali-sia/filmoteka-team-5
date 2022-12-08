@@ -5,14 +5,17 @@ import WatchedFilmsStorage from '../storage/add-to-watced';
 import { filmsApiServise } from '../../index';
 import {paginationLibrary} from "./pagination-library";
 
-export const watchedFilmsStorage = new WatchedFilmsStorage;
+export const watchedFilmsStorage = new WatchedFilmsStorage();
 export function onWatchedLibClick() {
     filmsApiServise.setPage(1);
     filmsApiServise.setWathedOpen();
     const watchedList = watchedFilmsStorage.getWathedFilmsList();
+    if (!watchedList) {
+        return;
+    }
     resetMarkup();
     //console.log('to check', watchedList);
-    const totalItems = watchedFilmsStorage.getWathedFilmsList().length;
+    const totalItems = watchedList.length;
     //console.log('items number', totalItems);
     //console.log('length of the part of the object array', objectPart.length);
     const totalPages = Math.ceil(totalItems / 20);

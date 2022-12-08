@@ -9,6 +9,9 @@ export function onQueueLibClick() {
     filmsApiServise.setPage(1);
     filmsApiServise.setQueueOpen()
     const queueList = queueFilmsStorage.getQueueFilmsList();
+    if (!queueList) {
+        return;
+    }
     resetMarkup();
 
     const totalItems = queueList.length;
