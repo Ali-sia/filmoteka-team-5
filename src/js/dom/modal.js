@@ -84,7 +84,19 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
             original_title,
             overview,
             id,
-        } = filmData;
+    } = filmData;
+    let poster300 = `https://image.tmdb.org/t/p/w300/${poster_path}`;
+    let poster500 = `https://image.tmdb.org/t/p/w500/${poster_path}`;
+    let poster780 = `https://image.tmdb.org/t/p/w780/${poster_path}`;
+    let poster1280 = `https://image.tmdb.org/t/p/w1280/${poster_path}`;
+    let poster2000 = `https://image.tmdb.org/t/p/original/${poster_path}`;
+    if (poster_path === null) {
+        poster300 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`
+        poster500 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`
+        poster780 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`
+        poster1280 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`
+        poster2000 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`
+    }
     
     const modalEl = `<div class="filmcard__img-thumb">
                         <div>
@@ -101,15 +113,15 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                         </div>
                         <img class="filmcard__img"  
                             srcset="
-                                https://image.tmdb.org/t/p/w300/${poster_path}   300w,
-                                https://image.tmdb.org/t/p/w500/${poster_path}   500w,
-                                https://image.tmdb.org/t/p/w780/${poster_path}   780w,
-                                https://image.tmdb.org/t/p/w1280/${poster_path}   1280w,
-                                https://image.tmdb.org/t/p/original/${poster_path} 2000w
+                                ${poster300}   300w,
+                                ${poster500}   500w,
+                                ${poster780}   780w,
+                                ${poster1280}   1280w,
+                                ${poster2000} 2000w
                                 
                             "
                             loading="lazy"
-                            src="https://image.tmdb.org/t/p/w300/${poster_path}"
+                            src="${poster300}"
                             alt="#"
                             sizes="(max-width: 320px) 280px,
                                 (max-width: 768px) 340px,
