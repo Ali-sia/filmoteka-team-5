@@ -1,5 +1,5 @@
 // відмалювати фільми з списку "Queue"
-import { resetMarkup } from './show-popular-films';
+import { resetMarkup, appendEmptyStorageMessage } from './show-popular-films';
 import { appendPopularMarkup } from './show-popular-films';
 import { filmsApiServise } from '../../index';
 import QueueFilmsStorage from '../storage/add-to-queue';
@@ -9,11 +9,14 @@ export function onQueueLibClick() {
     filmsApiServise.setPage(1);
     filmsApiServise.setQueueOpen()
     const queueList = queueFilmsStorage.getQueueFilmsList();
-    if (!queueList) {
-        return;
-    }
+    
     resetMarkup();
 
+    if (!queueList) {
+        appendEmptyStorageMessage();
+        return;
+    }
+    
     const totalItems = queueList.length;
     const totalPages = Math.ceil(totalItems / 20);
 

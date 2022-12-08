@@ -1,5 +1,5 @@
 // відмалювати фільми з списку "watched"
-import { resetMarkup } from './show-popular-films';
+import { resetMarkup, appendEmptyStorageMessage } from './show-popular-films';
 import { appendPopularMarkup } from './show-popular-films';
 import WatchedFilmsStorage from '../storage/add-to-watced';
 import { filmsApiServise } from '../../index';
@@ -10,10 +10,14 @@ export function onWatchedLibClick() {
     filmsApiServise.setPage(1);
     filmsApiServise.setWathedOpen();
     const watchedList = watchedFilmsStorage.getWathedFilmsList();
+    
+    resetMarkup();
+
     if (!watchedList) {
+        appendEmptyStorageMessage();
         return;
     }
-    resetMarkup();
+    
     //console.log('to check', watchedList);
     const totalItems = watchedList.length;
     //console.log('items number', totalItems);
