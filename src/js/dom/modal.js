@@ -2,9 +2,7 @@
 // + рендер карток фільмів
 
 import { filmsApiServise } from "../../index";
-import { list, backdrop } from "../refs";
-import WatchedFilmsStorage from '../storage/add-to-watced';
-import QueueFilmsStorage from '../storage/add-to-queue';
+import { list, backdrop, filmcard } from "../refs";
 import TrailerApiService from "../api/getting-trailer";
 
 import { watchedFilmsStorage, onWatchedLibClick } from './show-watch-films';
@@ -28,7 +26,7 @@ const trailerApiService = new TrailerApiService();
 //   return currentFilm;
 // }
 
-list.addEventListener('click', createModal);
+list.addEventListener("click", onCardsListClick);
 
 function createModal(e) {
 
@@ -163,7 +161,7 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                             "
                             loading="lazy"
                             src="${poster300}"
-                            alt="#"
+                            alt="Poster of the film ${title}"
                       alt="#"
 
                                     sizes="(max-width: 320px) 280px,
@@ -305,4 +303,57 @@ function removeFromQueueLS() {
     onQueueLibClick();
   }
 
+}
+
+function onCardsListClick(e) {
+    if (e.target.classList.contains("films__overlay")) {
+          return 
+    };
+    if (e.target.nodeName === 'BUTTON') {
+
+    if (e.target.dataset.type === "w-add") {
+        addToWatchedLS();
+
+    } else if (e.target.dataset.type === "q-add") {
+        addToQueueLS();
+        
+    } else if (e.target.dataset.type === "w-remove") {
+        removeFromWatchedLS();
+
+    } else if (e.target.dataset.type === "q-remove") {
+       removeFromQueueLS();
+    } return
+    }
+    createModal(e);
+};
+
+export function checkButtonsOnHover(e) {
+      const filmCard = e.target.closest(".films__film-card");
+    if (!filmCard) {
+        return;
+    }
+
+    const filmID = Number(filmCard.dataset.filmsId);
+    const filmData = filmsApiServise.getFilmById(filmID);
+
+    currentFilm = filmData;
+    addToWatchedBtn = filmCard.querySelector('.btn__card-add');
+    addToQueueBtn = filmCard.querySelector('.btn__card-queue');
+    removeFromQueueBtn = filmCard.querySelector('.btn__card-r-queue');
+    removeFromWatchedBtn = filmCard.querySelector('.btn__card-r-watched');
+
+    if (watchedFilmsStorage.checkFilmInWatchedLocStor(currentFilm)) {
+        addToWatchedBtn.classList.add('is-hidden');
+        removeFromWatchedBtn.classList.remove('is-hidden');
+    } else {
+         addToWatchedBtn.classList.remove('is-hidden');
+        removeFromWatchedBtn.classList.add('is-hidden');
+    }
+    if (queueFilmsStorage.checkFilmInQueueLocStor(currentFilm)) {
+        addToQueueBtn.classList.add('is-hidden');
+        removeFromQueueBtn.classList.remove('is-hidden');
+    } else {
+        addToQueueBtn.classList.remove('is-hidden');
+        removeFromQueueBtn.classList.add('is-hidden');
+    }
 }
