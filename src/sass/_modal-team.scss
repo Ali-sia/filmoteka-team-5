@@ -1,6 +1,6 @@
 .modal-team {
   padding: 0;
-  height: 90vh;
+  height: 95vh;
 
   min-width: 280px;
   @media screen and (min-width: 768px) {
@@ -24,34 +24,31 @@
   &-list {
     padding: 0 20px 40px 20px;
     @media screen and (min-width: 768px) {
-      padding: 0 65px 35px 65px;
+      padding: 0 50px 35px 50px;
 
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
     }
-    @media screen and (min-width: 1280px) {
-      padding: 0 50px 35px 50px;
-    }
 
     &_item {
       width: calc((100% - 0 * 50px) / 1);
       @media screen and (min-width: 768px) {
-        width: calc((100% - 1 * 50px) / 2);
+        width: calc((100% - 2 * 30px) / 3);
       }
       @media screen and (min-width: 1280px) {
-        width: calc((100% - 2 * 50px) / 3);
+        width: calc((100% - 3 * 40px) / 4);
       }
       @media screen and (max-width: 768px) {
         &:not(:last-child) {
-          margin-bottom: 20px;
+          margin-bottom: 15px;
         }
       }
-      @media screen and (min-width: 768px) and (max-width: 1280px) {
-        &:nth-child(2n-1) {
-          margin-right: 50px;
+      @media screen and (min-width: 768px) and (max-width: 1279px) {
+        &:not(:nth-child(3n)) {
+          margin-right: 30px;
         }
-        &:not(:nth-last-child(1)) {
+        &:nth-last-child(n + 2) {
           margin-bottom: 30px;
         }
         &:nth-last-child(1) {
@@ -59,11 +56,11 @@
         }
       }
       @media screen and (min-width: 1280px) {
-        &:not(:nth-child(3n)) {
-          margin-right: 50px;
+        &:not(:nth-child(4n)) {
+          margin-right: 40px;
         }
         &:nth-last-child(n + 2) {
-          margin-bottom: 30px;
+          margin-bottom: 20px;
         }
         &:nth-last-child(1) {
           margin-right: 0;
@@ -85,7 +82,7 @@
     &_holder {
       position: relative;
 
-      max-height: 297px;
+      max-height: 220px;
 
       margin-bottom: 10px;
       border-radius: 5%;
@@ -105,9 +102,6 @@
       width: 100%;
       height: 100%;
 
-      //   background-color: var(--color-active-button);
-      //   opacity: 0.5;
-
       transform: translateY(100%);
 
       transition: transform var(--transition-duration-function);
@@ -115,44 +109,33 @@
 
     &_link:hover &_overlay,
     &_link:focus &_overlay {
-      transform: translateY(1.5%);
+      // transform: translateY(1.5%);
+      transform: translateY(2.2%);
     }
 
     &_text {
       width: 100%;
+      height: 50px;
 
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       margin-bottom: 5px;
 
       background-color: rgb(0, 0, 0, 0.5);
       color: var(--main-color);
+      border-radius: 5px;
 
       font-size: 28px;
       @media screen and (min-width: 768px) {
-        font-size: 32px;
+        font-size: 26px;
       }
-
-      // p {
-      //   opacity: 1;
-      // }
-
-      // img {
-      //   margin-left: 10px;
-
-      //   height: 30px;
-      //   width: 30px;
-
-      //   @media screen and (min-width: 768px) {
-      //     height: 35px;
-      //     width: 35px;
-      //   }
-      // }
     }
 
     &_image {
       width: 100%;
-      height: 297px;
+      height: 220px;
       object-fit: cover;
     }
 

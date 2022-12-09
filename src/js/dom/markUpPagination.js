@@ -1,10 +1,6 @@
 import {filmsApiServise} from '../../index';
 
 export function markupPagination() {
-    console.log("window.screen.width ", window.screen.width);
-    console.log("filmsApiServise.getPage() != 1 ", filmsApiServise.getPage() != 1);
-    console.log("window.screen.width >= 768 ", window.screen.width >= 768);
-    console.log("filmsApiServise.getPage() != 1 && window.screen.width >= 768", filmsApiServise.getPage() != 1 && window.screen.width >= 768);
     //Скрытие ненужных кнопок
     if (filmsApiServise.getPage() != 1 && window.screen.width >= 768) {
         document.querySelector('.pagination__button--button1').style.display = "block";
@@ -20,25 +16,25 @@ export function markupPagination() {
         document.querySelector('.pagination__item--item3').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() > 3 ) {
+    if (filmsApiServise.getPage() > 3 || (filmsApiServise.getPage() > 2 && window.screen.width < 768)) {
         document.querySelector('.pagination__item--item4').style.display = "block";
     } else {
         document.querySelector('.pagination__item--item4').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() > 2 ) {
+    if (filmsApiServise.getPage() > 2 || (filmsApiServise.getPage() > 1 && window.screen.width < 768)) {
         document.querySelector('.pagination__item--item5').style.display = "block";
     } else {
         document.querySelector('.pagination__item--item5').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() + 1 < filmsApiServise.getTotalPages()) {
+    if (filmsApiServise.getPage() + 1 < filmsApiServise.getTotalPages() || (filmsApiServise.getPage() < filmsApiServise.getTotalPages() && window.screen.width < 768)) {
         document.querySelector('.pagination__item--item7').style.display = "block";
     } else {
         document.querySelector('.pagination__item--item7').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() + 2 < filmsApiServise.getTotalPages()) {
+    if (filmsApiServise.getPage() + 2 < filmsApiServise.getTotalPages() || (filmsApiServise.getPage() + 1 < filmsApiServise.getTotalPages() && window.screen.width < 768)) {
         document.querySelector('.pagination__item--item8').style.display = "block";
     } else {
         document.querySelector('.pagination__item--item8').style.display = "none";
