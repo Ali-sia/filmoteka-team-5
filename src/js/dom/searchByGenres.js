@@ -31,16 +31,13 @@ async function showFilmsByGenre() {
         let filmsByGenre = {};
         try {
             filmsByGenre = await filmsApiServise.fetchFilmsByGenres();
-            console.log('filmByGenre', filmsByGenre);
+            // console.log('filmByGenre', filmsByGenre);
         } catch (error) {
             showErrorMessage();
             return;
         }
-        // console.log('Return showFilmsByGenre', response);
-        // return response;
+
     resetMarkup();
     appendPopularMarkup(filmsByGenre);
     
     }
-    // console.log('showFilmsByGenre: ', response)
-    
