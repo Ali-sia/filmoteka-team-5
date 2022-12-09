@@ -46,12 +46,9 @@ export default class FilmsApiService {
   async fetchFilmsByGenres() {
         const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.searchGenre}&page=${this.page}`;
     const response = await axios.get(URL);
-    // console.log('Responce-fetchFilmsByGenres', response);
     this.totalPages = response.data.total_pages;
     console.log('this.totalPages: ', this.totalPages);
     this.data = response.data.results;
-    // console.log('this.data: ', this.data);
-    // console.log('fetchFilmsByGenres', response.data.results);
     return response.data.results;
   }
 
