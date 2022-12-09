@@ -4,11 +4,6 @@ import { filmsApiServise } from '../../index';
 import { showErrorMessage } from './show-search-films';
 import { getElement } from './getElement';
 
-// const filmsApiGenres = new GenresApiService;
-
-//   if (getElement('.header__genres-list')) {
-//     getElement('.header__genres-list').addEventListener('submit', onGenresBtnClick);
-//   }
 export function searchGenres() {
     const genresBtnsList = getElement('.header__genres-list');
     if (!genresBtnsList) {
@@ -17,14 +12,11 @@ export function searchGenres() {
     genresBtnsList.addEventListener('click', onGenresBtnClick);
 
 }
-// let searchGenre;
-
 
 function onGenresBtnClick(event) {
     filmsApiServise.setPage(1);
     filmsApiServise.setIsPopular(false);
     let searchGenre = event.target.innerText.toLowerCase();
-    // console.log(searchGenre);
 
     if (!searchGenre) {
     showErrorMessage();
@@ -46,7 +38,9 @@ async function showFilmsByGenre() {
         }
         // console.log('Return showFilmsByGenre', response);
         // return response;
-    }
-    // console.log('showFilmsByGenre: ', response)
     resetMarkup();
     appendPopularMarkup(filmsByGenre);
+    
+    }
+    // console.log('showFilmsByGenre: ', response)
+    
