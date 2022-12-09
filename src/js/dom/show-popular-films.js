@@ -71,7 +71,7 @@ export function createPopularMarkup(data) {
 //   localStorage.setItem('genres', JSON.stringify([]));
 // }
 
-function genresList(array) {
+export function genresList(array) {
   let genre_names = '';
   let foundGenres = 0;
   const arrGenres = JSON.parse(localStorage.getItem('genres'));

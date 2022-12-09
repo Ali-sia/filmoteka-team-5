@@ -33,7 +33,7 @@ function onSearch(event) {
   }, 1000);
 }
 
-function showErrorMessage() {
+export function showErrorMessage() {
   let messageDisplayRef = getElement('[data-alarmMessage=""]');
 
   if (messageDisplayRef.style.display === 'block') {
@@ -51,6 +51,7 @@ async function showFilms() {
   let response = {};
   try {
     response = await filmsApiServise.getFilmByName();
+    // console.log(response);
   } catch (error) {
     showErrorMessage();
     return;

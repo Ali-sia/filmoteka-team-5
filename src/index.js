@@ -4,8 +4,10 @@ import './js/dom/loader';
 import { activePage } from './js/dom/activePage';
 //Активация кнопки в хедере страницы библиотеки
 import { activeLibraryBtn } from './js/dom/activeLibraryBtn';
+import { activeGenreBtn } from './js/dom/activeGenresBtn';
 //Пошук за назвою
 import { searchFilms } from './js/dom/show-search-films';
+import { searchGenres } from './js/dom/searchByGenres';
 import FilmsApiService from './js/api/api-server';
 import {
   appendPopularMarkup,
@@ -18,6 +20,7 @@ import './js/dom/modal';
 import './js/dom/modal-team';
 
 import './js/dom/scroll-btn';
+import './js/dom/searchByGenres';
 
 import './js/dom/show-watch-films';
 import './js/dom/show-queue-films';
@@ -36,13 +39,15 @@ export const filmsApiServise = new FilmsApiService();
 
 activePage();
 activeLibraryBtn();
+activeGenreBtn()
 searchFilms();
+searchGenres();
 pagination();
 loadPage();
 
 function loadPage() {
    if (document.querySelector(".header__container--is-home")) {
-   firstLoadPage();
+     firstLoadPage();
 }
     
 if (document.querySelector(".header__container--is-library")) {

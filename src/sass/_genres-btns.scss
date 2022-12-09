@@ -1,0 +1,33 @@
+.header__genres-list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 9px;
+    justify-content: center;
+    row-gap: 3px;
+    margin-top: 8px;
+    max-height: 34px;
+    overflow-y: auto;
+
+    @media screen and (min-width: 478px) {
+            margin-top: 15px;
+            // overflow: none;
+        }
+}
+.header__genres-btn {
+    border: none;
+    background-color: transparent;
+    color: #e5e5e5a8;
+    &:hover,
+    :focus {
+        color: #ff6b01c1;
+        text-decoration: underline;
+    }
+        @media screen and (min-width: 1280px) {
+            font-size: 14px;
+        }
+   
+}
+.header__genres-btn--isActive {
+    color: #ff6b01c1;
+    text-decoration: underline;
+}
