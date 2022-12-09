@@ -36,10 +36,10 @@ function onGenresBtnClick(event) {
 }
 
 async function showFilmsByGenre() {
-        let response = {};
+        let filmsByGenre = {};
         try {
-            response = await filmsApiServise.fetchFilmsByGenres();
-            // console.log(response);
+            filmsByGenre = await filmsApiServise.fetchFilmsByGenres();
+            console.log('filmByGenre', filmsByGenre);
         } catch (error) {
             showErrorMessage();
             return;
