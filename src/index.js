@@ -25,6 +25,12 @@ import { onWatchedLibClick } from './js/dom/show-watch-films';
 import { pagination } from './js/dom/pagination';
 import { watchedFilmsStorage } from './js/dom/show-watch-films';
 import { paginationLibrary } from './js/dom/pagination-library';
+import { list } from './js/refs'
+import { checkButtonsOnHover } from './js/dom/modal';
+
+list.addEventListener('mouseover', (e) => {
+ checkButtonsOnHover(e)
+ });
 
 export const filmsApiServise = new FilmsApiService();
 
@@ -40,6 +46,7 @@ function loadPage() {
 }
     
 if (document.querySelector(".header__container--is-library")) {
+   filmsApiServise.setData(watchedFilmsStorage.getWathedFilmsList());
   paginationLibrary();
   onWatchedLibClick();
 }

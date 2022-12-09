@@ -7,7 +7,7 @@ import { showLoader, hideLoader } from './loader';
 export function createPopularMarkup(data) {
   return data
     .map(
-      ({ poster_path, title, genre_ids, release_date, id }) => {
+      ({ poster_path, title, genre_ids, release_date, id, vote_average }) => {
         let poster300 = `https://image.tmdb.org/t/p/w300/${poster_path}`;
         let poster500 = `https://image.tmdb.org/t/p/w500/${poster_path}`;
         let poster780 = `https://image.tmdb.org/t/p/w780/${poster_path}`;
@@ -21,8 +21,9 @@ export function createPopularMarkup(data) {
           poster2000 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`
         
         }
-        return ` <article class="films__film-card" data-films-id="${id}">
-        <img
+        return `<article class="films__film-card" data-films-id="${id}">
+  <div class="films__thumb">
+    <img
           class="films__img"
           srcset="
             ${poster300}   300w,
@@ -33,25 +34,37 @@ export function createPopularMarkup(data) {
             
           "
           loading="lazy"
-          src="${poster300}"
+           src="${poster300}"
           alt="Poster of the film ${title}",
           sizes="(max-width: 320px) 280px,
             (max-width: 768px) 340px,
             400px"
-        />
-
-        <div class="films__info">
-          <h2 class="films__title">${title}</h2>
-
-          <p class="films__genres">${genresList(genre_ids)} ${generateYear(
-          release_date
-        )}</p>
-        </div>
-      </article>
+      />
+  <div class="films__overlay">
+           <div class="films__buttons-thumb">
+                            <button type="button" class="films__button btn__card-add" data-type = "w-add">add to Watched</button>
+                            <button type="button" class="films__button btn__card-r-watched is-hidden" data-type = "w-remove">remove from Watched</button>
+                            
+                            <button type="button" class="films__button btn__card-queue" data-type = "q-add">add to queue</button>
+                            <button type="button" class="films__button btn__card-r-queue is-hidden" data-type = "q-remove">remove from queue</button>
+           </div>
+  
+    </div>
+   <span class="films__vote"> ${vote_average.toFixed(1)}</span>
+  </div>
+  <div class="films__info">
+    <h2 class="films__title">${title}</h2>
+    <p class="films__genres">
+      ${genresList(genre_ids)} ${generateYear(release_date)}
+    </p>
+     </div>
+</article>
       `
     })
     .join('');
 }
+
+// ==========================================================
 
 // let localStorageData = JSON.parse(localStorage.getItem('genres'));
 // if (localStorageData === null) {
@@ -122,7 +135,7 @@ export function appendPopularMarkup(data) {
 export function appendErrorMessage() {
   list.insertAdjacentHTML(
     'beforeend',
-    '<p>Unable to load images, please try again later.</p>'
+    '<p>Oh no, it seems no movies for today. Please try again later.</p>'
   );
 }
 export function appendEmptyStorageMessage() {

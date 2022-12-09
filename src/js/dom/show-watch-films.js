@@ -10,10 +10,10 @@ export function onWatchedLibClick() {
     filmsApiServise.setPage(1);
     filmsApiServise.setWathedOpen();
     const watchedList = watchedFilmsStorage.getWathedFilmsList();
-    
-    resetMarkup();
+      
+  resetMarkup();
 
-    if (!watchedList) {
+    if (!watchedList || watchedList.length === 0) {
         appendEmptyStorageMessage();
         document.querySelector('.pagination__container').style.display = "none";
         return;
