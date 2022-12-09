@@ -5,7 +5,7 @@
     justify-content: center;
     row-gap: 3px;
     margin-top: 8px;
-    max-height: 30px;
+    max-height: 32px;
     overflow-y: scroll;
 
     @media screen and (min-width: 768px) {
@@ -25,4 +25,9 @@
         @media screen and (min-width: 1280px) {
             font-size: 14px;
         }
+   
+}
+.header__genres-btn--isActive {
+    color: #ff6b01c1;
+    text-decoration: underline;
 }

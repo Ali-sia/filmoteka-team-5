@@ -4,6 +4,7 @@ import './js/dom/loader';
 import { activePage } from './js/dom/activePage';
 //Активация кнопки в хедере страницы библиотеки
 import { activeLibraryBtn } from './js/dom/activeLibraryBtn';
+import { activeGenreBtn } from './js/dom/activeGenresBtn';
 //Пошук за назвою
 import { searchFilms } from './js/dom/show-search-films';
 import { searchGenres } from './js/dom/searchByGenres';
@@ -32,6 +33,7 @@ export const filmsApiServise = new FilmsApiService();
 
 activePage();
 activeLibraryBtn();
+activeGenreBtn()
 searchFilms();
 searchGenres();
 pagination();
@@ -39,7 +41,7 @@ loadPage();
 
 function loadPage() {
    if (document.querySelector(".header__container--is-home")) {
-   firstLoadPage();
+     firstLoadPage();
 }
     
 if (document.querySelector(".header__container--is-library")) {
