@@ -49,4 +49,4 @@ async function showFilmsByGenre() {
     }
     // console.log('showFilmsByGenre: ', response)
     resetMarkup();
-    // appendPopularMarkup(response);
+    appendPopularMarkup(filmsByGenre);
