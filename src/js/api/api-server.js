@@ -4,7 +4,7 @@ import { API_KEY } from './api-key';
 
 export default class FilmsApiService {
   constructor() {
-    (this.totalPages = 0), (this.page = 0), (this.isPopular = false),
+    (this.totalPages = 0), (this.page = 0), (this.isPopular = false), (this.isFilmSearch = false),
     (this.nameFilm = ''), (this.searchGenre = ''), (this.data = []), (this.genres = []), (this.isWatchedOpen = 0), (this.isQueueOpen = 0)
   }
   async fetchPopularFilms() {
@@ -48,7 +48,7 @@ export default class FilmsApiService {
     const response = await axios.get(URL);
     // console.log('Responce-fetchFilmsByGenres', response);
     this.totalPages = response.data.total_pages;
-    // console.log('this.totalPages: ', this.totalPages);
+    console.log('this.totalPages: ', this.totalPages);
     this.data = response.data.results;
     // console.log('this.data: ', this.data);
     // console.log('fetchFilmsByGenres', response.data.results);
@@ -76,12 +76,20 @@ export default class FilmsApiService {
     return this.isPopular;
   }
 
+  getIsFilmSearch() {
+    return this.isFilmSearch;
+  }
+
   setPage(page) {
     this.page = page;
   }
 
   setIsPopular(isPopular) {
     this.isPopular = isPopular;
+  }
+
+  setIsFilmSearch(isFilmSearch) {
+    this.isFilmSearch = isFilmSearch;
   }
 
   setNameFilm(nameFilm) {

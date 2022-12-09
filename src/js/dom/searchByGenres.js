@@ -16,6 +16,7 @@ export function searchGenres() {
 function onGenresBtnClick(event) {
     filmsApiServise.setPage(1);
     filmsApiServise.setIsPopular(false);
+    filmsApiServise.setIsFilmSearch(false);
     let searchGenre = event.target.innerText.toLowerCase();
 
     if (!searchGenre) {

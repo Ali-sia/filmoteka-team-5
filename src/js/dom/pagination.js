@@ -44,9 +44,11 @@ async function onClick(event) {
     //Определение запроса
     if (filmsApiServise.getIsPopular()) {
         response = await filmsApiServise.fetchPopularFilms();
-    } else {
+    } else if(filmsApiServise.getIsFilmSearch()) {
         response = await filmsApiServise.getFilmByName();
-    }
+    } else {
+        response = await filmsApiServise.fetchFilmsByGenres();
+    } 
 
     //Разметка страницы и перерисовка пагинации
     appendPopularMarkup(response);
