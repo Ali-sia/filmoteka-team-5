@@ -7,14 +7,21 @@
     margin-top: 8px;
     max-height: 30px;
     overflow: scroll;
+
+    @media screen and (min-width: 1280px) {
+            margin-top: 15px;
+        }
 }
 .header__genres-btn {
     border: none;
     background-color: transparent;
-    color: #8c8c8c8f;
+    color: #e5e5e5a8;
     &:hover,
     :focus {
-        color: #ff6b018a;
+        color: #ff6b01c1;
         text-decoration: underline;
     }
+        @media screen and (min-width: 1280px) {
+            font-size: 14px;
+        }
 }
