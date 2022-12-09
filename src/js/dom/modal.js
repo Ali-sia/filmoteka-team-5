@@ -1,10 +1,12 @@
 // функції відкриття та закриття з modal.js
 // + рендер карток фільмів
+
 import { filmsApiServise } from "../../index";
 import { list, backdrop } from "../refs";
 import WatchedFilmsStorage from '../storage/add-to-watced';
 import QueueFilmsStorage from '../storage/add-to-queue';
 import TrailerApiService from "../api/getting-trailer";
+
 import { watchedFilmsStorage, onWatchedLibClick } from './show-watch-films';
 import { queueFilmsStorage, onQueueLibClick } from './show-queue-films';
 
@@ -26,9 +28,10 @@ const trailerApiService = new TrailerApiService();
 //   return currentFilm;
 // }
 
-list.addEventListener("click", createModal);
+list.addEventListener('click', createModal);
 
 function createModal(e) {
+
     e.preventDefault();
     const filmCard = e.target.closest(".films__film-card");
 
@@ -84,30 +87,49 @@ function createModal(e) {
         addToQueueBtn.classList.add('is-hidden');
         removeFromQueueBtn.classList.remove('is-hidden');
     }
+
 }
 
-function getFilmGenresNames (filmGenresID) {
-    const arrGenres = JSON.parse(localStorage.getItem('genres'));
-    if (!arrGenres) {
-        return "unknown";
-    }
+function getFilmGenresNames(filmGenresID) {
+  const arrGenres = JSON.parse(localStorage.getItem('genres'));
+  if (!arrGenres) {
+    return 'unknown';
+  }
 
-    return filmGenresID.map(genreID => arrGenres.find(genre => genre.id === genreID).name).join(", ");
+  return filmGenresID
+    .map(genreID => arrGenres.find(genre => genre.id === genreID).name)
+    .join(', ');
 }
 
 function makeFilmcardMarkup(filmData, filmGenresNames) {
-    const { poster_path,
-            title,
-            vote_average,
-            vote_count,
-            popularity,
-            original_title,
-            overview,
-            id,
-            backdrop_path,
-    } = filmData;
 
-    const backdropEl = `
+  const {
+    poster_path,
+    title,
+    vote_average,
+    vote_count,
+    popularity,
+    original_title,
+    overview,
+    id,
+    backdrop_path,
+  } = filmData;
+
+  let poster300 = `https://image.tmdb.org/t/p/w300/${poster_path}`;
+  let poster500 = `https://image.tmdb.org/t/p/w500/${poster_path}`;
+  let poster780 = `https://image.tmdb.org/t/p/w780/${poster_path}`;
+  let poster1280 = `https://image.tmdb.org/t/p/w1280/${poster_path}`;
+  let poster2000 = `https://image.tmdb.org/t/p/original/${poster_path}`;
+  if (poster_path === null) {
+    poster300 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`;
+    poster500 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`;
+    poster780 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`;
+    poster1280 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`;
+    poster2000 = `https://media.istockphoto.com/id/1244034031/vector/cinema-poster-with-cola-film-strip-and-clapper-vector.jpg?s=612x612&w=0&k=20&c=JN4E5qJgcq3qm89rSc2BIJT6AZ80MvRJie__r3OENY8=`;
+  }
+
+  const backdropEl = `
+
                     <div class='backdrop__img' 
                         style="background-image:
                             linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
@@ -130,17 +152,20 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                                     </button>
                                 </div>
                                 <img class="filmcard__img"  
-                                    srcset="
-                                        https://image.tmdb.org/t/p/w300/${poster_path}   300w,
-                                        https://image.tmdb.org/t/p/w500/${poster_path}   500w,
-                                        https://image.tmdb.org/t/p/w780/${poster_path}   780w,
-                                        https://image.tmdb.org/t/p/w1280/${poster_path}   1280w,
-                                        https://image.tmdb.org/t/p/original/${poster_path} 2000w
-                                        
-                                    "
-                                    loading="lazy"
-                                    src="https://image.tmdb.org/t/p/w300/${poster_path}"
-                                    alt="#"
+
+                                srcset="
+                                ${poster300}   300w,
+                                ${poster500}   500w,
+                                ${poster780}   780w,
+                                ${poster1280}   1280w,
+                                ${poster2000} 2000w
+                                
+                            "
+                            loading="lazy"
+                            src="${poster300}"
+                            alt="#"
+                      alt="#"
+
                                     sizes="(max-width: 320px) 280px,
                                         (max-width: 768px) 340px,
                                         400px"/>
@@ -153,12 +178,16 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                                     <tr>
                                         <td>Vote / Votes</td>
                                         <td>                                   
+
                                             <div class="filmcard__votes"><span class="filmcard__vote">${vote_average.toFixed(1)}</span> / ${vote_count}</div>
+
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Popularity</td>
+
                                         <td colspan="3">${popularity.toFixed(1)}</td>
+
                                     </tr>
                                     <tr>
                                         <td>Original Title</td>
@@ -186,6 +215,7 @@ function makeFilmcardMarkup(filmData, filmGenresNames) {
                         <svg class="modal-btn__icon" width="24px" height="24px" xmlns="http://www.w3.org/2000/svg"><path d="M24.956 8.929l-1.885-1.885-7.071 7.071-7.071-7.071-1.885 1.885 7.071 7.071-7.071 7.071 1.885 1.885 7.071-7.071 7.071 7.071 1.885-1.885-7.071-7.071z"></svg>
                         </button>
                     </div>`;
+
            
     backdrop.innerHTML = backdropEl;
 }
@@ -197,37 +227,40 @@ function openModal () {
     modalCloseBtn = document.querySelector('.modal-close-btn');
     youTubeBtn = document.querySelector('.youtube-btn');
 
-    modalCloseBtn.addEventListener("click", closeModal);
-    document.addEventListener("click", closeModalByOutBackdropClick);
-    document.addEventListener("keydown", closeModalByEsc);
-    youTubeBtn.addEventListener("click", onYouTubeBtnClick);
+
+  modalCloseBtn.addEventListener('click', closeModal);
+  document.addEventListener('click', closeModalByOutBackdropClick);
+  document.addEventListener('keydown', closeModalByEsc);
+  youTubeBtn.addEventListener('click', onYouTubeBtnClick);
 }
 
 function closeModal() {
-    backdrop.classList.add("is-hidden");
-    document.body.style.overflow = 'scroll';
+  backdrop.classList.add('is-hidden');
+  document.body.style.overflow = 'scroll';
 
-    modalCloseBtn.removeEventListener("click", closeModal);
-    document.removeEventListener("click", closeModalByOutBackdropClick);
-    document.removeEventListener("keydown", closeModalByEsc);
-    youTubeBtn.removeEventListener("click", onYouTubeBtnClick);
+  modalCloseBtn.removeEventListener('click', closeModal);
+  document.removeEventListener('click', closeModalByOutBackdropClick);
+  document.removeEventListener('keydown', closeModalByEsc);
+  youTubeBtn.removeEventListener('click', onYouTubeBtnClick);
 }
 
 function closeModalByOutBackdropClick(e) {
+
     if (e.target === backdropImg || e.target === backdrop ) {
         closeModal();
     }
+
 }
 
 function closeModalByEsc(e) {
-    if (e.code === "Escape") {
-        closeModal();
-    }
+  if (e.code === 'Escape') {
+    closeModal();
+  }
 }
 
 function onYouTubeBtnClick(e) {
-    trailerApiService.filmID = Number(e.currentTarget.dataset.id);
-    trailerApiService.showTrailer();
+  trailerApiService.filmID = Number(e.currentTarget.dataset.id);
+  trailerApiService.showTrailer();
 }
 
 //функціонал для ЛС
@@ -237,30 +270,39 @@ function addToWatchedLS() {
   watchedFilmsStorage.saveWatchedFilms();
 
   addToWatchedBtn.classList.add('is-hidden');
-    removeFromWatchedBtn.classList.remove('is-hidden');
-    if (filmsApiServise.isWatchedOpen) { onWatchedLibClick()}; 
+  removeFromWatchedBtn.classList.remove('is-hidden');
+  if (filmsApiServise.isWatchedOpen) {
+    onWatchedLibClick();
+  }
 }
 
 function addToQueueLS() {
   queueFilmsStorage.myAddToQueueFilms(currentFilm);
 
   addToQueueBtn.classList.add('is-hidden');
-    removeFromQueueBtn.classList.remove('is-hidden');
-    if (filmsApiServise.isQueueOpen) { onQueueLibClick() };
+  removeFromQueueBtn.classList.remove('is-hidden');
+  if (filmsApiServise.isQueueOpen) {
+    onQueueLibClick();
+  }
 }
 
 function removeFromWatchedLS() {
   addToWatchedBtn.classList.remove('is-hidden');
   removeFromWatchedBtn.classList.add('is-hidden');
 
-    watchedFilmsStorage.removeFromWatched(currentFilm);
-    if (filmsApiServise.isWatchedOpen) { onWatchedLibClick() };
+  watchedFilmsStorage.removeFromWatched(currentFilm);
+  if (filmsApiServise.isWatchedOpen) {
+    onWatchedLibClick();
+  }
 }
 
 function removeFromQueueLS() {
   addToQueueBtn.classList.remove('is-hidden');
   removeFromQueueBtn.classList.add('is-hidden');
 
-    queueFilmsStorage.removeFromQueue(currentFilm);
-    if (filmsApiServise.isQueueOpen) { onQueueLibClick() };
+  queueFilmsStorage.removeFromQueue(currentFilm);
+  if (filmsApiServise.isQueueOpen) {
+    onQueueLibClick();
+  }
+
 }
