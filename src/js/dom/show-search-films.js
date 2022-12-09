@@ -17,6 +17,7 @@ function onSearch(event) {
   getElement("#searchForm").elements.submit.disabled = true;
 
   filmsApiServise.setPage(1);
+  filmsApiServise.setIsFilmSearch(true);
   filmsApiServise.setIsPopular(false);
   let nameFilm = event.currentTarget.elements.input.value.trim();
 
