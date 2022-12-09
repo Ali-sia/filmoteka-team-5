@@ -6,6 +6,7 @@ import { activePage } from './js/dom/activePage';
 import { activeLibraryBtn } from './js/dom/activeLibraryBtn';
 //Пошук за назвою
 import { searchFilms } from './js/dom/show-search-films';
+import { searchGenres } from './js/dom/searchByGenres';
 import FilmsApiService from './js/api/api-server';
 import {
   appendPopularMarkup,
@@ -18,6 +19,7 @@ import './js/dom/modal';
 import './js/dom/modal-team';
 
 import './js/dom/scroll-btn';
+import './js/dom/searchByGenres';
 
 import './js/dom/show-watch-films';
 import './js/dom/show-queue-films';
@@ -31,6 +33,7 @@ export const filmsApiServise = new FilmsApiService();
 activePage();
 activeLibraryBtn();
 searchFilms();
+searchGenres();
 pagination();
 loadPage();
 
