@@ -9,6 +9,8 @@ export function searchGenres() {
     if (!genresBtnsList) {
         return;
     }
+
+    
     genresBtnsList.addEventListener('click', onGenresBtnClick);
 
 }
@@ -17,6 +19,9 @@ function onGenresBtnClick(event) {
     filmsApiServise.setPage(1);
     filmsApiServise.setIsPopular(false);
     filmsApiServise.setIsFilmSearch(false);
+    if (event.target.tagName !== 'BUTTON') {
+        return;
+    }
     let searchGenre = event.target.innerText.toLowerCase();
 
     if (!searchGenre) {
