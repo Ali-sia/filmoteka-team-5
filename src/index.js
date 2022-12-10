@@ -57,7 +57,7 @@ if (document.querySelector(".header__container--is-library")) {
 }
 }
 
-async function firstLoadPage() {
+export async function firstLoadPage() {
   try {
     //зберігаємо жанри в LocalStorage
     const saveGenresLocalStorage = await filmsApiServise.fetchGenres();

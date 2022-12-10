@@ -1,6 +1,6 @@
 import { appendPopularMarkup, resetMarkup } from './show-popular-films';
 // import { filmsApiGenres } from '../api/getting-films-by-genres';
-import { filmsApiServise } from '../../index';
+import { filmsApiServise, firstLoadPage } from '../../index';
 import { showErrorMessage } from './show-search-films';
 import { getElement } from './getElement';
 
@@ -28,9 +28,12 @@ function onGenresBtnClick(event) {
     showErrorMessage();
     return;
     }
+    if (searchGenre === 'popular') {
+        firstLoadPage();
+    }
 
     filmsApiServise.setSearchGenre(searchGenre);
-    showFilmsByGenre()
+    showFilmsByGenre();
 }
 
 async function showFilmsByGenre() {
