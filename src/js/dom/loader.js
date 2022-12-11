@@ -7,3 +7,13 @@ window.addEventListener('load', () => setTimeout (function() {
   })
 }, 500)
 );
+
+// window.addEventListener('load', () => setTimeout (function() {
+//     const loader = document.querySelector('.loader');
+//     loader.classList.add('loader--hidden');
+//   //   loader.addEventListener('transitionend', () => {
+//   //   document.body.classList.remove('loader');
+//   // })
+// }, 500)
+// );
+
