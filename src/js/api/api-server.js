@@ -4,16 +4,26 @@ import { API_KEY } from './api-key';
 
 export default class FilmsApiService {
   constructor() {
-    (this.totalPages = 0), (this.page = 0), (this.isPopular = false), (this.isFilmSearch = false),
-    (this.nameFilm = ''), (this.searchGenre = ''), (this.data = []), (this.genres = []), (this.isWatchedOpen = 0), (this.isQueueOpen = 0)
+    (this.totalPages = 0),
+      (this.page = 0),
+      (this.isPopular = false),
+      (this.isFilmSearch = false),
+      (this.nameFilm = ''),
+      (this.searchGenre = ''),
+      (this.data = []),
+      (this.genres = []),
+      (this.isWatchedOpen = 0),
+      (this.isQueueOpen = 0);
   }
+
   async fetchPopularFilms() {
     const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
 
     const response = await axios.get(URL);
     this.totalPages = response.data.total_pages;
     this.data = response.data.results;
-    return response.data.results;
+    // return response.data.results;
+    return this.data;
   }
 
   getFilmById(id) {
@@ -44,20 +54,16 @@ export default class FilmsApiService {
   }
 
   async fetchFilmsByGenres() {
-        const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.searchGenre}&page=${this.page}`;
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.searchGenre}&page=${this.page}`;
     const response = await axios.get(URL);
-    // console.log('Responce-fetchFilmsByGenres', response);
     this.totalPages = response.data.total_pages;
-    console.log('this.totalPages: ', this.totalPages);
+    // console.log('this.totalPages: ', this.totalPages);
     this.data = response.data.results;
-    // console.log('this.data: ', this.data);
-    // console.log('fetchFilmsByGenres', response.data.results);
     return response.data.results;
   }
 
   async fetchGenres() {
     const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
-
     const response = await axios.get(URL);
     this.genres = response.data.genres;
     // console.log('genres:', this.genres);
@@ -102,11 +108,11 @@ export default class FilmsApiService {
 
   setWathedOpen() {
     this.isWatchedOpen = 1;
-     this.isQueueOpen = 0;
+    this.isQueueOpen = 0;
   }
-   setQueueOpen() {
+  setQueueOpen() {
     this.isWatchedOpen = 0;
-     this.isQueueOpen = 1;
+    this.isQueueOpen = 1;
   }
 
   setTotalPages(totalPages) {
@@ -116,5 +122,4 @@ export default class FilmsApiService {
   setSearchGenre(searchGenre) {
     this.searchGenre = searchGenre;
   }
-  
 }
