@@ -1,9 +1,3 @@
-
-
-.list {
-  list-style: none;
-}
-
 .link {
   display: block;
 
@@ -11,11 +5,11 @@
 
   text-decoration: none;
 
-  transition: color 0.25 linear;
+  transition: color var(--transition-duration-function);
 
   &:hover,
   &:focus {
-    color: #999999;
+    color: ver(--color-header-hover);
   }
 }
 
@@ -233,13 +227,13 @@
 
     &:hover,
     &:focus {
-      color: #999999;
+      color: var(--color-header-hover);
     }
   }
 
   &__message {
     display: none;
-        
+
     text-align: center;
 
     margin-top: 10px;
