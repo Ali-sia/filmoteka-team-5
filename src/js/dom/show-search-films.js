@@ -14,10 +14,7 @@ export function searchFilms() {
 function onSearch(event) {
   event.preventDefault();
 
-  getElement("#searchForm").elements.submit.disabled = true;
-
   filmsApiServise.setPage(1);
-  filmsApiServise.setIsFilmSearch(true);
   filmsApiServise.setIsPopular(false);
   let nameFilm = event.currentTarget.elements.input.value.trim();
 
@@ -28,10 +25,6 @@ function onSearch(event) {
 
   filmsApiServise.setNameFilm(nameFilm.replaceAll(' ', '+'));
   showFilms();
-
-  setTimeout(() => {
-    getElement("#searchForm").elements.submit.disabled = false;
-  }, 1000);
 }
 
 export function showErrorMessage() {
