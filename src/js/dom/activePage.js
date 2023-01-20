@@ -1,14 +1,14 @@
-import { getElement } from "./getElement";
+import { getElement } from './getElement';
 
 export function activePage() {
-    if (getElement(".header__container--is-home")) {
-        isActivePage('[data-ref="home"]');
-        return;
-    }
+  if (getElement('.header__container--is-home')) {
+    isActivePage('[data-ref="home"]');
+    return;
+  }
 
-    isActivePage('[data-ref="library"]');
+  isActivePage('[data-ref="library"]');
 }
 
 function isActivePage(selector) {
-    getElement(selector).classList.add("header__nav-item--is-active");
+  getElement(selector).classList.add('header__nav-item--is-active');
 }

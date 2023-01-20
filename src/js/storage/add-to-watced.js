@@ -35,7 +35,7 @@ export default class WatchedFilmsStorage {
     // this._watchedFilmsList = JSON.parse(localStorage.getItem('watched-films'));
     return JSON.parse(localStorage.getItem('watched-films'));
   }
- 
+
   removeFromWatched(film) {
     if (!localStorage.getItem('watched-films')) {
       return;

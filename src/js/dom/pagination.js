@@ -1,55 +1,64 @@
-import {filmsApiServise} from '../../index';
+import { filmsApiServise } from '../../index';
 import { getElement } from './getElement';
 import { resetMarkup } from './show-popular-films';
 import { appendPopularMarkup } from './show-popular-films';
 
 export function pagination() {
-    document.querySelector('.pagination').addEventListener('click', onClick);
+  document.querySelector('.pagination').addEventListener('click', onClick);
 }
 
 async function onClick(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    if (!getElement(".header__container--is-home")) {
-        return;
-    }
+  if (!getElement('.header__container--is-home')) {
+    return;
+  }
 
-    if (event.target.tagName != "A" && !event.target.classList.contains("pagination__img")) {
-        return;
-    }
+  if (
+    event.target.tagName != 'A' &&
+    !event.target.classList.contains('pagination__img')
+  ) {
+    return;
+  }
 
-    //Определение номера страницы назначения
-    let targetPage = filmsApiServise.getPage();
-    if (event.target.classList.contains("pagination__button--button1") || event.target.classList.contains("pagination__img1")) {
-        document.querySelector('.pagination__button--button1').blur();
-        targetPage -= 1;
-    } else if (event.target.classList.contains("pagination__button--button8") || event.target.classList.contains("pagination__img2")) {
-        document.querySelector('.pagination__button--button8').blur();
-        targetPage += 1;
-    } else {
-        targetPage = Number(event.target.textContent);
-    }
-    
-    //Установка целевой страницы
-    filmsApiServise.setPage(targetPage);
+  //Определение номера страницы назначения
+  let targetPage = filmsApiServise.getPage();
+  if (
+    event.target.classList.contains('pagination__button--button1') ||
+    event.target.classList.contains('pagination__img1')
+  ) {
+    document.querySelector('.pagination__button--button1').blur();
+    targetPage -= 1;
+  } else if (
+    event.target.classList.contains('pagination__button--button8') ||
+    event.target.classList.contains('pagination__img2')
+  ) {
+    document.querySelector('.pagination__button--button8').blur();
+    targetPage += 1;
+  } else {
+    targetPage = Number(event.target.textContent);
+  }
 
-    //Очистка разметки секции карточек
-    resetMarkup();
-    event.target.blur();
-    getElement(".pagination__container").style.display = "none";
+  //Установка целевой страницы
+  filmsApiServise.setPage(targetPage);
 
-    //Подготовка к разметке страницы
-    let response = {};
+  //Очистка разметки секции карточек
+  resetMarkup();
+  event.target.blur();
+  getElement('.pagination__container').style.display = 'none';
 
-    //Определение запроса
-    if (filmsApiServise.getIsPopular()) {
-        response = await filmsApiServise.fetchPopularFilms();
-    } else if(filmsApiServise.getIsFilmSearch()) {
-        response = await filmsApiServise.getFilmByName();
-    } else {
-        response = await filmsApiServise.fetchFilmsByGenres();
-    } 
+  //Подготовка к разметке страницы
+  let response = {};
 
-    //Разметка страницы и перерисовка пагинации
-    appendPopularMarkup(response);
+  //Определение запроса
+  if (filmsApiServise.getIsPopular()) {
+    response = await filmsApiServise.fetchPopularFilms();
+  } else if (filmsApiServise.getIsFilmSearch()) {
+    response = await filmsApiServise.getFilmByName();
+  } else {
+    response = await filmsApiServise.fetchFilmsByGenres();
+  }
+
+  //Разметка страницы и перерисовка пагинации
+  appendPopularMarkup(response);
 }

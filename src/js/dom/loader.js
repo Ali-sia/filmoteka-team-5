@@ -5,5 +5,7 @@ export function showLoader() {
 }
 
 export function hideLoader() {
-  setTimeout(()=>{loader.classList.add('loader--hidden');}, 500);
+  setTimeout(() => {
+    loader.classList.add('loader--hidden');
+  }, 500);
 }

@@ -15,16 +15,16 @@ export function paginationLibrary() {
 async function onClick(event) {
   event.preventDefault();
 
-  if (!getElement(".header__container--is-library")) {
+  if (!getElement('.header__container--is-library')) {
     return;
-    }
+  }
 
-    let watchedList = [];
-    if (filmsApiServise.isWatchedOpen) {
-        watchedList = watchedFilmsStorage.getWathedFilmsList();
-    } else {
-        watchedList = queueFilmsStorage.getQueueFilmsList();
-    }
+  let watchedList = [];
+  if (filmsApiServise.isWatchedOpen) {
+    watchedList = watchedFilmsStorage.getWathedFilmsList();
+  } else {
+    watchedList = queueFilmsStorage.getQueueFilmsList();
+  }
   //Защита от клика не в кнопку
   if (
     event.target.tagName != 'A' &&
@@ -65,7 +65,7 @@ async function onClick(event) {
   //Подготовка к разметке страницы
   let response = [];
   let pages = filmsApiServise.getTotalPages();
-  
+
   //Определение запроса
   if (targetPage < pages) {
     response = watchedList.slice(startArraySlice, endArraySlice);
