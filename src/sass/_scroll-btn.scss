@@ -1,56 +1,56 @@
 @keyframes btn-anim {
-    0% {
-        transform: rotate(30deg);
-    }
+  0% {
+    transform: rotate(30deg);
+  }
 
-    5% {
-        transform: rotate(-30deg);
-    }
+  5% {
+    transform: rotate(-30deg);
+  }
 
-    10% {
-        transform: rotate(15deg);
-    }
+  10% {
+    transform: rotate(15deg);
+  }
 
-    14% {
-        transform: rotate(-15deg);
-    }
+  14% {
+    transform: rotate(-15deg);
+  }
 
-    18% {
-        transform: rotate(0);
-    }
+  18% {
+    transform: rotate(0);
+  }
 }
 
 .scroll-btn {
-    position: fixed;
-    bottom: 50px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border-color: transparent;
-    cursor: pointer;
-    background-color: #ff6b08b8;
-    z-index: 10;
-    animation: btn-anim 6s ease-in-out infinite forwards;
-    transition: background-color 250ms cubic-bezier(0.5, 1, 0.89, 1);
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-color: transparent;
+  cursor: pointer;
+  background-color: var(--color-scroll-btn);
+  z-index: 10;
+  animation: btn-anim 6s ease-in-out infinite forwards;
+  transition: background-color var(--transition-duration-function);
 
-    &:hover,
-    &:focus {
-        background-color: var(--color-films-description) ;
-    }
+  &:hover,
+  &:focus {
+    background-color: var(--color-films-description);
+  }
 }
 
 .scroll-btn__svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--main-color);
-    stroke-width: 1px;
-    fill: var(--main-color);
+  width: 25px;
+  height: 25px;
+  stroke: var(--main-color);
+  stroke-width: 1px;
+  fill: var(--main-color);
 }
 
 .scroll-btn.is-hidden {
-    display: none;
+  display: none;
 }
