@@ -1,15 +1,32 @@
 :root {
   --main-color: #ffffff;
+  --color-main-black: #000000;
+
   --color-background-header: #e5e5e5;
+  --color-background-footer: #f7f7f7;
+  --color-background-pagination: #f7f7f7;
+  --color-background-transparent: rgba(0, 0, 0, 0.5);
+
   --color-warning: #ff001b;
   --color-active-button: #ff6b01;
-  --color-footer-background: #f7f7f7;
-  --color-footer-text: #545454;
   --color-films-description: #ff6b08;
-  --color-main-black: #000000;
-  --color-modal-grey: #8C8C8C;
-  --color-padding-current: #FF6B08;
+  --color-padding-current: #ff6b08;
+
+  --color-header-hover: #999999;
+
+  --color-genres-list-btn: #e5e5e5a8;
+  --color-hover-genres-list-btn: #ff6b01c1;
+
+  --color-loader-first: #dcdcdc;
+  --color-loader-second: #ff6b08;
+  --color-background-loader: rgba(0, 0, 0, 0.5);
+
+  --color-modal-grey: #8c8c8c;
+
+  --color-text-footer: #545454;
+  --color-scroll-btn: #ff6b08b8;
 
   --transition-duration: 0.25s;
   --transition-duration-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration-function-450: 450ms cubic-bezier(0.4, 0, 0.2, 1);
 }
